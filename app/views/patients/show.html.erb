@@ -1,0 +1,9 @@
+<h1>Patient Record</h1>
+
+<p>First Name: <%= @patient.first_name %></p>
+<p>Last Name: <%= @patient.last_name %></p>
+<p>Email: <%= @patient.email %></p>
+<p>Phone: <%= @patient.phone %></p>
+
+<%= link_to "delete", @patient, method: :delete,
+                                  data: { confirm: "Are you sure?" } %>

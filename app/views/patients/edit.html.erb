@@ -1,4 +1,4 @@
-<h1>Add Patient Record</h1>
+<h1> Update Patient Record</h1>
 <%= form_for(@patient) do |f| %>
 
   <%= f.label :first_name %>
@@ -13,6 +13,6 @@
   <%=f.label :phone %>
   <%= f.telephone_field :phone %>
 
-  <%= f.submit "Create Patient" %>
+  <%= f.submit "Update Patient" %>
 <% end %>
 

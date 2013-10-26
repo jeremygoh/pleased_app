@@ -1,0 +1,7 @@
+<h1>Patient Records</h1>
+<% @patients.each do |patient| %>
+<p>First Name: <%= patient.first_name %></p>
+<p>Last Name: <%= patient.last_name %></p>
+<p>Email: <%= patient.email %></p>
+<p>Phone Number: <%= patient.phone %></p>
+<% end %>
