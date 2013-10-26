@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20131026181833) do
 
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.string   "comment"
     t.datetime "date"
