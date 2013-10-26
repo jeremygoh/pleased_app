@@ -1,0 +1,17 @@
+<%= form_for(@patient) do |f| %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%=f.label :phone %>
+  <%= f.telephone_field :phone %>
+
+  <%= f.submit "Create Patient" %>
+  <% end %>
+
