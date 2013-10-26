@@ -8,12 +8,53 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<!--   <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
+<img src="https://lh6.googleusercontent.com/-Yjr8_GXULjo/UmwmNCklCqI/AAAAAAAAAB8/HXtW0ceeWEY/w253-h253-p/2013-10-26" width=100 height=100 align="middle">
 
-<%= yield %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="#">Home</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+
+      	<a class="brand" href="#">Groups</a>
+      	<a class="brand" href="#">Patients</a>
+      	<a class="brand" href="#">Meetings</a>
+      	<a class="brand" href="#">Account Settings</a>
+      	<a class="brand" href="#">Sign Out</a>
+
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+	<%= yield %>
+</div>
+
+
+
+
+
+
 
 </body>
 </html>
