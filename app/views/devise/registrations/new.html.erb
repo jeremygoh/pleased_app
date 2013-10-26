@@ -12,6 +12,18 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+  <div>
+  <p>Type</p>
+  <%= f.radio_button :role, 1%>
+  <%= label :role, 'Healthcare Professional' %>
+
+  <%= f.radio_button :role, 2%>
+  <%= label :role, 'Peer Support Leader' %>
+  </div>
+
+
+
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 
