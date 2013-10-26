@@ -11,6 +11,12 @@
   <%= f.label :comment %>
   <%= f.text_field :comment %>
 
+  <% if @patient.meetings.count > 0 %>
+    <%= f.label :meeting_id %>
+    <%= select(:comment, :meeting_id, @patient.meetings.map{ |m| [m.date, m.id] },
+	      { :include_blank => true }) %>
+  <% end %>
+
   <%= f.hidden_field :patient_id, :value => @patient.id %>
   <%= f.submit "Add comment" %>
 <% end %>
