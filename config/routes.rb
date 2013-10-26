@@ -1,5 +1,9 @@
 PleasedApp::Application.routes.draw do
 
+  devise_scope :user do
+    root :to => 'devise/sessions#new'
+  end
+
   resources :meetings
 
   devise_for :users
