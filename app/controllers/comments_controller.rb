@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:comment, :patient_id)
+    params.require(:comment).permit(:comment, :patient_id, :meeting_id)
   end
 
 end
