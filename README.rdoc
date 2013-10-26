@@ -3,6 +3,8 @@ An app developed at the Think Global Hack Local UBC Hackathon!
 
 Devs:
 Christine Yu
+Jonas Teeberg
+
 == README
 
 This README would normally document whatever steps are necessary to get the
