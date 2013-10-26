@@ -1,5 +1,6 @@
-<h1>Groups#index</h1>
-<% @group.each do |group| %>
-<p>Group Name: <%= group.name %></p>
-<% end %>
-
+<h1>Groups</h1>
+<ul>
+  <% @group.each do |group| %>
+    <li><%= link_to group.name, group %></li>
+  <% end %>
+</ul>
