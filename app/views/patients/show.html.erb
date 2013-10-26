@@ -22,7 +22,7 @@
 	<th>Date</th>
 </tr>
 
-<% @patient.comments.each do |comment| %>
+<% @patient.comments.order("created_at DESC").each do |comment| %>
 <tr>
 	<td><%= comment.user.first_name %> <%= comment.user.last_name %></td>
 	<td><%= comment.comment %></td>
