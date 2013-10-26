@@ -12,6 +12,8 @@ group :production do
   gem 'pg'
 end
 
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
