@@ -26,9 +26,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
+    @comment = Comment.find(params[:id])
+    patient_id = @comment.patient.id.to_s
+    @comment.destroy
     flash[:success] = "Comment deleted."
-    redirect to coments_path
+    redirect_to '/patients/' + patient_id
   end
 
   def comment_params
