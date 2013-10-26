@@ -26,6 +26,7 @@
 	<th>Author</th>
 	<th>Comment</th>
 	<th>Date</th>
+	<th>Meeting</th>
 </tr>
 
 <% @patient.comments.order("created_at DESC").each do |comment| %>
@@ -33,6 +34,7 @@
 	<td><%= comment.user.first_name %> <%= comment.user.last_name %></td>
 	<td><%= comment.comment %></td>
 	<td><%= comment.created_at %></td>
+	<td><%= link_to comment.meeting.date, meeting_path(comment.meeting.id) if comment.meeting %></td>
 </tr>
 <% end %>
 </table>
