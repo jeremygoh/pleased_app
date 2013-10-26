@@ -4,6 +4,7 @@ An app developed at the Think Global Hack Local UBC Hackathon!
 Devs:
 Christine Yu
 Jonas Teeberg
+Hannah Sarson
 
 == README
 
