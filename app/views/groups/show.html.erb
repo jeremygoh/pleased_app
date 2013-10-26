@@ -1,0 +1,7 @@
+<h1>Show Group</h1>
+
+<p>Group Name: <%= @group.name %></p>
+
+
+<%= link_to "delete", @group, method: :delete,
+                                  data: { confirm: "Are you sure?" } %>

@@ -1,0 +1,9 @@
+<h1>Groups#edit</h1>
+<%= form_for(@group) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Update Group" %>
+<% end %>
+<p>Find me in app/views/groups/edit.html.erb</p>
