@@ -24,6 +24,7 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
+    @comment = Comment.new
   end
 
   def update
