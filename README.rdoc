@@ -5,6 +5,8 @@ Devs:
 Christine Yu
 Jonas Teeberg
 Ian McLean
+Hannah Sarson
+
 
 == README
 
