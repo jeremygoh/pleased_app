@@ -5,5 +5,10 @@
   <%= @meeting.date %>
 </p>
 
+<p>
+  <strong>Group:</strong>
+  <%= @meeting.group.name %>
+</p>
+
 <%= link_to 'Edit', meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
