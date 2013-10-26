@@ -5,5 +5,21 @@
 <p>Email: <%= @patient.email %></p>
 <p>Phone: <%= @patient.phone %></p>
 
+<h2>Comments</h2>
+<table>
+<tr>
+	<th>Author</th>
+	<th>Comment</th>
+	<th>Date</th>
+</tr>
+<% @patient.comments.each do |comment| %>
+<tr>
+	<td><%= comment.user.username %></td>
+	<td><%= comment.comment %></td>
+	<td><%= comment.created_at %></td>
+</tr>
+<% end %>
+</table>
+
 <%= link_to "delete", @patient, method: :delete,
                                   data: { confirm: "Are you sure?" } %>
