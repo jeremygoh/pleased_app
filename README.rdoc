@@ -6,6 +6,7 @@ Christine Yu
 Jonas Teeberg
 Ian McLean
 Hannah Sarson
+Alicia Koo
 
 
 == README
