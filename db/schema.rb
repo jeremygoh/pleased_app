@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131026170650) do
+ActiveRecord::Schema.define(version: 20131026181833) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.string   "comment"
+    t.datetime "date"
+    t.integer  "meeting_id"
+    t.integer  "user_id"
+    t.integer  "patient_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["meeting_id"], name: "index_comments_on_meeting_id"
+  add_index "comments", ["patient_id"], name: "index_comments_on_patient_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "meetings", force: true do |t|
+    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,6 +46,7 @@ ActiveRecord::Schema.define(version: 20131026170650) do
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_id"
   end
 
   create_table "users", force: true do |t|
