@@ -2,6 +2,7 @@ class PatientsController < ApplicationController
 
   def new
     @patient = Patient.new
+    @group = Group.all
   end
 
   def index
@@ -46,7 +47,7 @@ class PatientsController < ApplicationController
 private
 
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :email, :phone)
+    params.require(:patient).permit(:first_name, :last_name, :email, :phone, :group_id)
   end
 
 end

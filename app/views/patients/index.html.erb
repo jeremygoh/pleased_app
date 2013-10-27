@@ -2,20 +2,22 @@
 <table>
   <thead>
     <tr>
-      <th>First Name</th>
       <th>Last Name</th>
+      <th>First Name</th>
       <th>Email</th>
       <th>Phone Number</th>
+      <th>Group</th>
     </tr>
   </thead>
 
   <tbody>
     <% @patients.each do |patient| %>
     <tr>
-      <td><%= patient.first_name %></td>
       <td><%= patient.last_name %></td>
+      <td><%= patient.first_name %></td>
       <td><%= patient.email %></td>
       <td><%= patient.phone %></td>
+      <td><%= patient.group.name unless patient.group.nil? %></td>
       <td><%= link_to 'Show', patient %></td>
       <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
       <td><%= link_to 'Destrory', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>

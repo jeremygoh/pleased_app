@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.update_attributes(comment_params)
       flash[:success] = "Comment updated successfully"
-      redirect_to @patient
+      redirect_to '/patients/' + @comment.patient.id.to_s
     else
       render 'edit'
     end
