@@ -1,6 +1,17 @@
 <h1><%= @group.name %></h1>
 
 <p>
+   <% if @group.users.count > 0 %>
+    <strong>Peer Leaders/Health Professionals:</strong>
+    <ul>
+    <% @group.users.each do |user| %>
+      <li><%= link_to user.first_name+' '+user.last_name, member %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <strong>This group has no users assigned to it yet.</strong>
+  <% end %>
+
   <% if @group.patients.count > 0 %>
     <strong>Members:</strong>
     <ul>
@@ -10,6 +21,17 @@
     </ul>
   <% else %>
     <strong>This group has no patients assigned to it yet.</strong>
+  <% end %>
+
+  <% if @group.meetings.count > 0 %>
+  <strong>Meetings:</strong>
+    <ul>
+    <% @group.meetings.each do |meeting| %>
+      <li><%= link_to meeting.date %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <strong>This group has not had any meetings yet.</strong>
   <% end %>
 </p>
 
