@@ -50,8 +50,7 @@
                                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
                                 <input class="patient" name="attend[patient_id]" type="hidden" value="<%= notification[0] %>" />
                                 <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= notification[1] %>" />
-                                <input type="submit" value="submit" />
-                                </form>
+                              </form>
                             </div>
                           <% end %>
 
@@ -116,8 +115,7 @@
                                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
                                 <input class="patient" name="attend[patient_id]" type="hidden" value="<%= notification[0] %>" />
                                 <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= notification[1] %>" />
-                                <input type="submit" value="submit" />
-                                </form>
+                              </form>
                             </div>
                           <% end %>
 
@@ -210,7 +208,6 @@
                                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
                                 <input class="patient" name="attend[patient_id]" type="hidden" value="<%= notification[0] %>" />
                                 <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= notification[1] %>" />
-                                <input type="submit" value="submit" />
                                 </form>
                             </div>
                           <% end %>
@@ -292,6 +289,7 @@
           $('#attend-notifications').text("Successfully followed up")
           $('#attend-notifications').fadeOut(2000)
           $(related_table).fadeOut(2000)
+          $(checkbox).fadeOut(2000)
         }
         }
       )
