@@ -3,11 +3,13 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.user = current_user
+    @patient = @comment.patient
     if @comment.save
       flash[:success] = "Comment added successfully"
       redirect_to '/patients/' + @comment.patient.id.to_s
     else
-      render 'new'
+      flash[:error] = @comment.errors.full_messages.join('<br>')
+      render 'patients/show'
     end
   end
 
