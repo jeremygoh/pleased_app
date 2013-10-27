@@ -14,7 +14,8 @@ PleasedApp::Application.routes.draw do
   resources :comments, except: [:new, :index, :show]
   resources :meetings do
     member do
-      post 'attends' => 'attend#update'
+      post 'attends' => 'attends#create'
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

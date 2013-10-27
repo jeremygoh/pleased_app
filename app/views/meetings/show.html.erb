@@ -27,11 +27,13 @@
 <h4>Patients</h4>
   <% @meeting.group.patients.each do |patient| %>
   <div class="attend-user-form">
-    <form action="/meeting/<%= @meeting.id %>/attends" method="post">
+    <form action="/meetings/<%= @meeting.id %>/attends" method="post">
     <%= patient.last_name %>
     <%= patient.first_name %>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <input id="patient" name="attend[patient_id]" type="hidden" value="<%= patient.id %>" />
-    <input id="attend" name="attend[group_id]" type="checkbox" value="<%= @meeting.id %>" />
+    <input id="attend" name="attend[meeting_id]" type="hidden" value="<%= @meeting.id %>" />
+    <input id="attend" name="attend[attended]" type="checkbox"/>
     <input type="submit" value="submit form" />
 
   </div>
