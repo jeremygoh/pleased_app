@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027064750) do
+ActiveRecord::Schema.define(version: 20131027185543) do
 
   create_table "attends", force: true do |t|
     t.integer "meeting_id"
     t.integer "patient_id"
     t.boolean "attended"
+    t.boolean "checked"
   end
 
   add_index "attends", ["meeting_id"], name: "index_attends_on_meeting_id"
   add_index "attends", ["patient_id"], name: "index_attends_on_patient_id"
 
   create_table "comments", force: true do |t|
-    t.string   "comment"
+    t.text     "comment"
     t.integer  "meeting_id"
     t.integer  "user_id"
     t.integer  "patient_id"

@@ -1,12 +1,13 @@
 class AttendsController < ApplicationController
  before_filter :authenticate_user!
+
   def index
     @meeting = Meeting.find(params[:meeting_id])
   end
 
   def create
-    patient_id = params[:attend][:patient_id]
-    meeting_id = params[:attend][:meeting_id]
+    patient_id = params[:patient_id]
+    meeting_id = params[:meeting_id]
     existing_records = Attend.where(:patient_id => patient_id, :meeting_id => meeting_id)
     if existing_records.size > 0
       existing_records.each do |record|
@@ -38,7 +39,7 @@ class AttendsController < ApplicationController
   private
 
   def attend_params
-    params.require(:attend).permit(:meeting_id, :patient_id, :attended)
+    params.require(:attend).permit(:meeting_id, :patient_id, :attended, :checked)
   end
 
 end

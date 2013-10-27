@@ -28,41 +28,60 @@
 
 <p>
   <strong>Patients</strong>
-  <% @meeting.group.patients.each do |patient| %>
-    <div class="attend-user-form">
-      <form action="/meetings/<%= @meeting.id %>/attends" method="post" class="attend_form form-inline" role="form">
-        <%= hidden_field_tag "attend[attended]", nil %>
-        <input class="attend_checkbox" name="attend[attended]" type="checkbox" <%= 'checked value="1"' if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? && Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).first.attended == true %> />
-        <%= link_to patient.last_name + ", " + patient.first_name , patient %>
-        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-        <input class="patient" name="attend[patient_id]" type="hidden" value="<%= patient.id %>" />
-        <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= @meeting.id %>" />
-      </form>
-    </div>
-  <% end %>
+  <table class="table table-bordered table-hover patient-attendance">
+    <tbody>
+      <% @meeting.group.patients.each do |patient| %>
+        <tr>
+          <td>
+            <% if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? && Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).first.attended == true %>
+              <button class="btn btn-danger attend-button">Not attended</button>
+            <% else %>
+              <button class="btn btn-success attend-button">Attended</button>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to patient.last_name + ", " + patient.first_name , patient %>
+            <input type="hidden" value="<%= patient.id %>">
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </p>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+<% if current_user.is_admin? %>
+  <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+  <%= link_to 'Back', meetings_path %>
+<% end %>
 
 <script type="text/javascript">
-  $(".attend_checkbox").on('click', function(event){
-    checkbox = $(this)
-    parent_form = $(this).parent();
-    var valuesToSubmit = $(parent_form).serialize();
-    meeting_id = $(parent_form).children('.meeting').val()
-    url = '/meetings/' + meeting_id + "/attends"
+  $(".attend-button").on('click', function(event){
+    var button = $(this);
+    var success = $(this).hasClass('btn-success');
+    var meeting_id = <%= @meeting.id %>;
+    var patient_id = $(this).parents('tr').find('input').attr('value');
+    url = '/meetings/' + <%= @meeting.id %> + "/attends"
+
     $.ajax({
         type: "POST",
         url: url,
-        data: valuesToSubmit,
-        success: function(){
-          $('body').prepend('<div id="attend-notifications"></div>')
-          $('#attend-notifications').text("Successfully updated attendance")
+        data: {
+          patient_id: patient_id,
+          meeting_id: meeting_id,
+          attended: success
+        },
+        success: function() {
+          $('body').prepend('<div id="attend-notifications">Successfully updated attendance</div>')
           $('#attend-notifications').fadeOut(2000)
+
+          if(success) {
+            button.removeClass('btn-success').addClass('btn-danger').html("Not attended");
+          }
+          else {
+            button.removeClass('btn-danger').addClass('btn-success').html("Attended");
+          }
         }
-        }
-      )
+     });
   });
 
 
