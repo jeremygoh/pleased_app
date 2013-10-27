@@ -5,7 +5,7 @@
       <strong>Peer Support Leaders:</strong>
       <ul>
         <% @group.users.each do |user| %>
-          <% if user.role == 3 %>
+          <% if user.role == 2 %>
             <li><%= link_to user.full_name, user_path(user) %></li>
           <% end %>
         <% end %>

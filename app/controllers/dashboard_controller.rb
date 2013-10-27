@@ -33,9 +33,7 @@ before_filter :authenticate_user!
       end
 
         @past_meetings = Meeting.where(:date => 3.month.ago..Date.today - 1.day).limit(10)
-
         @today_meetings = Meeting.where(:date => Date.today.beginning_of_day..Date.today.end_of_day)
-
         @future_meetings = Meeting.where(:date => Date.today + 1.day..Date.today + 30.day)
 
 
@@ -44,11 +42,8 @@ before_filter :authenticate_user!
           user_group = Group.find(current_user.group_id)
 
         		@past_meetings = user_group.meetings.where(:date => 3.months.ago..Date.today - 1.day).limit(10)
-
         		@today_meetings = user_group.meetings.where(:date => Date.today.beginning_of_day..Date.today.end_of_day)
-
         		@future_meetings = user_group.meetings.where(:date => Date.today + 1.day..Date.today + 30.day)
-
 
             @notifications = []
             @past_meetings.each do |meeting|
