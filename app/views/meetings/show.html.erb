@@ -7,6 +7,7 @@
   <h4>Group:</h4>
   <%= @meeting.group.name %>
 </p>
+<p>
 
 <strong>Healthcare Professional</strong>
 <% @meeting.group.users.each do |user| %>
@@ -14,6 +15,8 @@
       <p><%= user.full_name %></p>
     <% end %>
   <% end %>
+  </p>
+<p>
 
 <strong>Peer Leaders</strong>
   <% @meeting.group.users.each do |user| %>
@@ -21,10 +24,16 @@
       <p><%= user.full_name %></p>
     <% end %>
   <% end %>
+</p>
 
 
+</br>
+<table cellpadding="10">
+<tr colspan="2"=><strong>Patients</strong></tr>
+<% @meeting.group.patients.each do |patient| %>
+	<div id="container" style="width:500px">  
+	<div class="attend-user-form">
 
-<strong>Patients</strong>
   <% @meeting.group.patients.each do |patient| %>
   <div class="attend-user-form">
       <form action="/meetings/<%= @meeting.id %>/attends" method="post" class="attend_form">
@@ -33,21 +42,25 @@
 
         <#% end %> -->
      <%= hidden_field_tag "attend[attended]", nil %>
-    <%= patient.last_name %>
-    <%= patient.first_name %>
-    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <tr><td><%= patient.last_name %>,
+    <%= patient.first_name %></td>
+    <td><input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <input class="patient" name="attend[patient_id]" type="hidden" value="<%= patient.id %>" />
     <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= @meeting.id %>" />
     <input class="attend_checkbox" name="attend[attended]" type="checkbox" <%= 'checked value="1"' if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? && Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).first.attended == true %> />
+
+    <input type="submit" value="submit form" /></td>
+
+  <% end %> 
+<% end %>
     </form>
   </div>
-  <% end %>
-
-
-
-
-
+  </div></tr></table>
+  </br>
 
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
+
+</br>
+</br>
