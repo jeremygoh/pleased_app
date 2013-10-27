@@ -11,7 +11,6 @@ PleasedApp::Application.routes.draw do
   resources :patients
   resources :groups
   resources :comments, except: [:new, :index, :show]
-  resources :dashboard
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -19,7 +18,7 @@ PleasedApp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  #get 'dashboard' => 'dashboard#user'
+  get 'dashboard' => 'dashboard#user'
   #get 'dashboard' => 'dashboard#admin'
 
   # Example of regular route:
