@@ -59,7 +59,7 @@ function updateTime()
   var minute = pad2(date.getMinutes());
   var second = pad2(date.getSeconds());
 
-  var str = day+'/'+month+'/'+year+', '+hour+':'+minute+':'+second;
+  var str = day+'/'+month+'/'+year;//+', '+hour+':'+minute+':'+second;
 
   $('span.current_time').html(str);
   window.setTimeout(updateTime, 1000);
