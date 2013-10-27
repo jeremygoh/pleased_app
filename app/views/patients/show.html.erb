@@ -50,8 +50,10 @@ p {text-indent:10px;}
   <td><%= comment.created_at %></td>
   <td><%= comment.updated_at unless comment.updated_at == comment.created_at%></td>
   <td><%= link_to comment.meeting.date, meeting_path(comment.meeting.id) if comment.meeting %></td>
+  <% if current_user == comment.user %>
   <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
   <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
 </tr>
 <% end %>
 </table>
