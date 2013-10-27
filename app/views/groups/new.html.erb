@@ -4,6 +4,15 @@
   <%= f.label :name , "Name*:" %>
   <%= f.text_field :name %>
 
+  <%= f.label :user , "Healthcare Professional:" %>
+  <%= f.collection_select :users, User.find_all_by_role(1).sort, :id, :full_name, include_blank: true %>
+
+  <%= f.label :name , "Peer Support Leader 1:" %>
+  <%= f.collection_select :users, User.find_all_by_role(2).sort, :id, :full_name, include_blank: true %>
+
+  <%= f.label :name , "Peer Support Leader 2:" %>
+  <%= f.collection_select :users, User.find_all_by_role(2).sort, :id, :full_name, include_blank: true %>
+
   <%= f.submit "Create Group" %>
 
 <% end %>
