@@ -1,5 +1,5 @@
 <h1> Update User Records</h1>
-<%= form_for(@users) do |f| %>
+<%= form_for(@user) do |f| %>
 
   <%= f.label :first_name %>
   <%= f.text_field :first_name %>
@@ -13,7 +13,5 @@
   <%=f.label :phone %>
   <%= f.telephone_field :phone %>
 
-  <%= f.collection_select :group_id, Group.order(:name), :id, :name, include_blank: true %>
-
-  <%= f.submit "Update Users" %>
+  <%= f.submit "Update User" %>
 <% end %>

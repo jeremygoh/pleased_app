@@ -1,0 +1,13 @@
+<h1>User Record</h1>
+
+<p>First name: <%= @user.first_name %></p>
+<p>Last name: <%= @user.last_name %></p>
+<p>Email: <%= @user.email %></p>
+<p>Telephone Number: <%= @user.phone %></p>
+
+<h2>Leadings Groups:</h2>
+<% if @user.groups.nil? %>
+  <%= @user.groups.each do |group| %>
+    <%= link_to group.name, group_path(group) %>
+  <% end %>
+<% end %>

@@ -7,16 +7,18 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @users = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
-
+  def show
+    @user = User.find(params[:id])
+  end
 
   def update
-    @users = User.find(params[:id])
-    if @users.update_attributes(users_params)
+    @user = User.find(params[:id])
+    if @user.update_attributes(users_params)
       flash[:success] = "User record updated successfully"
-      redirect_to @users
+      redirect_to @user
     else
       render 'edit'
     end
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
 
 private
 
-  def users_params
-    params.require(:user).permit(:group_id)
-  end
+  # def users_params
+  #   params.require(:user).permit(:group_id)
+  # end
 end
