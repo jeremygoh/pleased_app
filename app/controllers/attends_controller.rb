@@ -4,17 +4,28 @@ class AttendsController < ApplicationController
   end
 
   def create
-    attend = Attend.new(attend_params)
-    attend.save
+    patient_id = params[:attend][:patient_id]
+    meeting_id = params[:attend][:meeting_id]
+    existing_records = Attend.where(:patient_id => patient_id, :meeting_id => meeting_id)
+    if existing_records.size > 0
+      existing_records.each do |record|
+        record.destroy
+        attend = Attend.new(attend_params)
+        attend.save
+      end
+    else
+      attend = Attend.new(attend_params)
+      attend.save
+    end
   end
 
-  def update
-    patient_id = params[:attend][:patient_id]
-    patient = Patient.find(patient_id)
-    meeting_id = params[:attend][:meeting_id]
-    attend_record = Attend.where(:patient_id => patient.id, :meeting_id => meeting_id).first
-    attend_record.update_attributes(attend_params)
-  end
+  # def update
+  #   patient_id = params[:attend][:patient_id]
+  #   patient = Patient.find(patient_id)
+  #   meeting_id = params[:attend][:meeting_id]
+  #   attend_record = Attend.where(:patient_id => patient.id, :meeting_id => meeting_id).first
+  #   attend_record.update_attributes(attend_params)
+  # end
 
   private
 
