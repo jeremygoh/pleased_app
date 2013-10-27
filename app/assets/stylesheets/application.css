@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+
+#attend-notifications{
+  height: 30px;
+  background: #dff0d8;
+}

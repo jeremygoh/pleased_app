@@ -8,14 +8,16 @@
   <%= @meeting.group.name %>
 </p>
 <p>
+
 <strong>Healthcare Professional</strong>
 <% @meeting.group.users.each do |user| %>
     <% if user.role=="1" %>
       <p><%= user.full_name %></p>
     <% end %>
   <% end %>
-</p>
+  </p>
 <p>
+
 <strong>Peer Leaders</strong>
   <% @meeting.group.users.each do |user| %>
     <% if user.role=="2" %>
@@ -24,12 +26,18 @@
   <% end %>
 </p>
 
+
 </br>
 <table cellpadding="10">
 <tr colspan="2"=><strong>Patients</strong></tr>
 <% @meeting.group.patients.each do |patient| %>
 	<div id="container" style="width:500px">  
 	<div class="attend-user-form">
+
+
+<strong>Patients</strong>
+  <% @meeting.group.patients.each do |patient| %>
+  <div class="attend-user-form">
       <form action="/meetings/<%= @meeting.id %>/attends" method="post" class="attend_form">
       <!--   <#% if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? %>
           <input name="_method" type="hidden" value="patch" />
@@ -42,9 +50,12 @@
     <input class="patient" name="attend[patient_id]" type="hidden" value="<%= patient.id %>" />
     <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= @meeting.id %>" />
     <input class="attend_checkbox" name="attend[attended]" type="checkbox" <%= 'checked value="1"' if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? && Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).first.attended == true %> />
+
     <input type="submit" value="submit form" /></td>
 
   <% end %> 
+
+    </form>
   </div>
   </div></tr></table>
   </br>
