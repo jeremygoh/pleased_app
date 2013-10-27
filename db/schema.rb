@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027064750) do
+ActiveRecord::Schema.define(version: 20131027180710) do
 
   create_table "attends", force: true do |t|
     t.integer "meeting_id"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20131027064750) do
   add_index "attends", ["patient_id"], name: "index_attends_on_patient_id"
 
   create_table "comments", force: true do |t|
-    t.string   "comment"
+    t.text     "comment"
     t.integer  "meeting_id"
     t.integer  "user_id"
     t.integer  "patient_id"

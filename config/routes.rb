@@ -1,6 +1,9 @@
 PleasedApp::Application.routes.draw do
 
   get "attends/index"
+  get "application/make_admin"
+  get "application/make_user"
+
   devise_scope :user do
     root :to => 'dashboard#user'
   end
@@ -18,6 +21,7 @@ PleasedApp::Application.routes.draw do
       # patch 'attends' => 'attends#update'
     end
   end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

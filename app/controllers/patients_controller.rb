@@ -1,5 +1,7 @@
 class PatientsController < ApplicationController
 before_filter :authenticate_user!
+before_filter :admin_filter, :only => [:new, :create, :edit, :update, :destroy]
+
   def new
     @patient = Patient.new
     @group = Group.all

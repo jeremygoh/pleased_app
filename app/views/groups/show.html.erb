@@ -24,7 +24,10 @@
     <% end %>
     </ul>
   <% else %>
-    <strong>This group has no patients assigned to it yet.</strong>
+    <strong>This group has no patients assigned to it yet.</strong><br>
+    <ul>
+      <li>Assign a <%= link_to "patient", patients_path %></li>
+    </ul>
   <% end %>
 </p>
 
@@ -37,10 +40,15 @@
     <% end %>
     </ul>
   <% else %>
-    <strong>This group has not had any meetings yet.</strong>
+    <strong>This group has not had any meetings yet.</strong><br>
+    <ul>
+      <li>Assign a <%= link_to "meeting", meetings_path %></li>
+    </ul>
   <% end %>
 </p>
 
 
-<%= link_to "edit", edit_group_path(@group) %> |
-<%= link_to "delete", @group, method: :delete, data: { confirm: "Are you sure?" } %>
+<% if current_user.is_admin? %>
+  <%= link_to "edit", edit_group_path(@group) %> |
+  <%= link_to "delete", @group, method: :delete, data: { confirm: "This will also delete meetings for this group. Are you sure you wish to delete?" } %>
+<% end %>
