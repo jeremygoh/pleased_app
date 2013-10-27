@@ -165,18 +165,20 @@
                   <th>Add Comment</th>
                 </thead>
                   <% @notifications.each do |notification| %>
-                    <tr>
+                    <tr id="patient-<%=notification[0]%>-meeting-<%=notification[1]%>">
                       <td><%= Patient.find(notification[0]).last_name %></td>
                       <td><%= Patient.find(notification[0]).first_name %></td>
                       <td><%= Meeting.find(notification[1]).date %></td>
                       <td><%= ((Time.now - Meeting.find(notification[1]).date)/86400).floor.to_s + " days" %></td>
                     </tr>
+                  <% end %>
+                  </table>
 
-                        <% @notifications.each do |notifcation| %>
+                        <% @notifications.each do |notification| %>
                             <div class="attend-checked-form">
                               <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
                                 <%= hidden_field_tag "attend[checked]", nil %>
-                                <input class="attend_checkbox" name="attend[checked]" type="checkbox" />
+                                <input class="attend_checked" name="attend[checked]" type="checkbox" />
                                 <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
                                 <input class="patient" name="attend[patient_id]" type="hidden" value="<%= notification[0] %>" />
                                 <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= notification[1] %>" />
@@ -184,7 +186,7 @@
                                 </form>
                             </div>
                           <% end %>
-                  <% end %>
+
             </div>
           <% end %>
         </div>
@@ -241,3 +243,32 @@
         </div>
     </div>
 <% end %>
+patient-<%=@notifications[0]%>-meeting-<%=@notifications[1]%>
+
+
+<script type="text/javascript">
+  $(".attend_checked").on('click', function(event){
+    checkbox = $(this)
+    parent_form = $(this).parent();
+    parent_div = $(parent_form).parent();
+    var valuesToSubmit = $(parent_form).serialize();
+    meeting_id = $(parent_form).children('.meeting').val()
+    url = '/meetings/' + meeting_id + "/attends"
+    patient_id = $(parent_form).children('.patient').val()
+    related_table = "#patient-" + patient_id + "-meeting-" + meeting_id
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: valuesToSubmit,
+        success: function(){
+          $('body').prepend('<div id="attend-notifications"></div>')
+          $('#attend-notifications').text("Successfully followed up")
+          $('#attend-notifications').fadeOut(2000)
+          $(related_table).fadeOut(2000)
+        }
+        }
+      )
+  });
+
+
+</script>
