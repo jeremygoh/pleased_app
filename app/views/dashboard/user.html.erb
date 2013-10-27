@@ -5,10 +5,11 @@
 
         <div>
             <div class="panel-heading">
-              <h2 class="panel-title" style="color: black">Follow-Ups</h2>
+              <h4 class="panel-title" style="color: black">Follow-Ups</h4>
             </div>
 
-            <div class="panel-body" style="border: solid;">
+            <div class="panel-body">
+                <div class="alert alert-safety">
               <%if !@all_notifications.nil? && !@all_notifications.empty? %>
                 <div class="alert alert-danger">To Follow Up:
                   <table class="table">
@@ -87,13 +88,13 @@
 
 
 
-      <div class="panel-heading" style="border: solid; size: 1px;">
-          <h2 class="panel-title" style="color: black">Meetings</h2>
+      <div class="panel-heading">
+          <h4 class="panel-title" style="color: black">Meetings</h4>
       </div>
 
-    <div class="panel-body" style= "border: solid;">
+    <div class="panel-body" >
         <div class="alert alert-safety">
-         <h4>Past meetings</h4>
+         <h5>Past meetings</h5>
          <% unless @past_meetings.nil? %>
               <% @past_meetings.each do |meeting| %>
 
@@ -104,7 +105,7 @@
         </div>
 
         <div class="alert alert-info">
-         <h4>Today's meetings</h4>
+         <h5>Today's meetings</h5>
          <% unless @today_meetings.nil? %>
                 <% @today_meetings.each do |meeting| %>
 
@@ -116,7 +117,7 @@
 
 
           <div class="alert alert-safety">
-            <h4>Future meetings</h4>
+            <h5>Future meetings</h5>
             <% unless @future_meetings.nil? %>
                 <% @future_meetings.each do |meeting| %>
 
@@ -131,11 +132,12 @@
     <h4>Dashboard for Peer Leaders</h4>
 
     <div>
-        <div class="panel-heading" style="border: solid; size: 1px;">
-          <h2 class="panel-title" style="color: black">Follow-Ups</h2>
+        <div class="panel-heading">
+          <h4 class="panel-title" style="color: black">Follow-Ups</h4>
         </div>
 
-        <div class="panel-body" style="border: solid;">
+        <div class="panel-body">
+            <div class="alert alert-safety">
           <%if !@notifications.nil? && !@notifications.empty? %>
             <div class="alert alert-danger">To Follow Up:
               <table class="table">
@@ -181,7 +183,7 @@
         </div>
 
         <div class="alert alert-info">
-         <h4>Today's meetings</h4>
+         <h5>Today's meetings</h5>
          <% unless @today_meetings.nil? %>
                 <% @today_meetings.each do |meeting| %>
 
