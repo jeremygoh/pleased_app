@@ -1,5 +1,6 @@
 PleasedApp::Application.routes.draw do
 
+  get "attends/index"
   devise_scope :user do
     root :to => 'devise/sessions#new'
   end
@@ -11,6 +12,9 @@ PleasedApp::Application.routes.draw do
   resources :patients
   resources :groups
   resources :comments, except: [:new, :index, :show]
+  resources :meetings do
+    resources :attends
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
