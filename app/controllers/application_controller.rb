@@ -12,7 +12,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    dashboard_path
+    root_path
+  end
+
+  def admin_filter
+      redirect_to root_path unless current_user && current_user.is_admin?
   end
 
 end

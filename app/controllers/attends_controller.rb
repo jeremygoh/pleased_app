@@ -1,4 +1,5 @@
 class AttendsController < ApplicationController
+ before_filter :authenticate_user!
   def index
     @meeting = Meeting.find(params[:meeting_id])
   end

@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-
+before_filter :authenticate_user!
   def new
     @patient = Patient.new
     @group = Group.all

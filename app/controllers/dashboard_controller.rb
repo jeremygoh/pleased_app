@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+before_filter :authenticate_user!
 
 	def user
     unless current_user.group_id.nil?

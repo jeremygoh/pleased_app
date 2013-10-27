@@ -1,0 +1,36 @@
+ <div>
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar">
+
+      <div class="navbar-inner">
+        <div class="container">
+
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+
+          <!-- Be sure to leave the brand out there if you want it shown -->
+          <a class="brand" href="/">Home</a>
+
+          <!-- Everything you want hidden at 940px or less, place within here -->
+          <div class="nav-collapse collapse">
+
+
+            <%= link_to "Groups", groups_path, "class" => "brand" %>
+            <%= link_to "Patients", patients_path, "class" => "brand" %>
+            <%= link_to "Meetings", meetings_path, "class" => "brand" %>
+            <%= link_to "Account", edit_user_registration_path, "class" => "brand" %>
+            <% if current_user %>
+              <%= link_to "Log out", destroy_user_session_path, :method => :delete, "class" => "brand" %>
+            <% end %>
+            <!-- .nav, .navbar-search, .navbar-form, etc -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </nav>
+    </div>

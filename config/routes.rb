@@ -2,7 +2,7 @@ PleasedApp::Application.routes.draw do
 
   get "attends/index"
   devise_scope :user do
-    root :to => 'devise/sessions#new'
+    root :to => 'dashboard#user'
   end
 
   resources :meetings
@@ -15,7 +15,7 @@ PleasedApp::Application.routes.draw do
   resources :meetings do
     member do
       post 'attends' => 'attends#create'
-      patch 'attends' => 'attends#update'
+      # patch 'attends' => 'attends#update'
     end
   end
 
@@ -25,7 +25,7 @@ PleasedApp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  get 'dashboard' => 'dashboard#user'
+  # get 'dashboard' => 'dashboard#user'
   #get 'dashboard' => 'dashboard#admin'
 
   # Example of regular route:

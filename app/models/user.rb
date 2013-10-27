@@ -16,4 +16,12 @@ class User < ActiveRecord::Base
     last_name + ", " + first_name
   end
 
+  def is_admin?
+    if admin
+      true
+    else
+      false
+    end
+  end
+
 end
