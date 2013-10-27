@@ -41,6 +41,7 @@
   <% end %>
 </p>
 
-
-<%= link_to "edit", edit_group_path(@group) %> |
-<%= link_to "delete", @group, method: :delete, data: { confirm: "Are you sure?" } %>
+<% if current_user.is_admin? %>
+  <%= link_to "edit", edit_group_path(@group) %> |
+  <%= link_to "delete", @group, method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
