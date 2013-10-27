@@ -23,26 +23,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path unless current_user && current_user.is_admin?
   end
 
-  def make_user
-    if current_user
-      current_user.admin = false
-      current_user.save
-      flash[:success] = "You are now a normal user."
-    else
-      flash[:error] = "You are not logged in."
-    end
-    redirect_to root_path
-  end
-
-  def make_admin
-    if current_user
-      current_user.admin = true
-      current_user.save
-      flash[:success] = "You are now an admin."
-    else
-      flash[:error] = "You are not logged in."
-    end
-    redirect_to root_path
-  end
-
 end

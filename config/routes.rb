@@ -1,8 +1,6 @@
 PleasedApp::Application.routes.draw do
 
   get "attends/index"
-  get "application/make_admin"
-  get "application/make_user"
 
   devise_scope :user do
     root :to => 'dashboard#user'
