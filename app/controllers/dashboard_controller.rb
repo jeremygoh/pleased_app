@@ -10,7 +10,7 @@ before_filter :authenticate_user!
 
       all_past_meetings.each do |meeting|
         Patient.all.each do |patient|
-          if Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).empty? || Attend.were(:patient_id => patient.id, :meeting_id => meeting.id).first.attended
+          if (Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).empty? || Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).first.attended == false) || Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).first.checked!=true
             @all_notifications << [patient.id, meeting.id]
           end
         end
@@ -25,7 +25,7 @@ before_filter :authenticate_user!
       all_past_meetings.each do |meeting|
 
         Patient.all.each do |patient|
-          if Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).empty? || Attend.were(:patient_id => patient.id, :meeting_id => meeting.id).first.attended
+          if (Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).empty? || Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).first.attended == false) || Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).first.checked!=true
             @all_notifications << [patient.id, meeting.id]
           end
         end
@@ -52,7 +52,7 @@ before_filter :authenticate_user!
             @notifications = []
             @past_meetings.each do |meeting|
               user_group.patients.each do |patient|
-                if Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).empty? || Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).first.attended
+                if (Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).empty? || Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).first.attended == false) || Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).first.checked!=true
                   @notifications << [patient.id, meeting.id]
                 end
               end

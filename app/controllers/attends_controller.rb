@@ -39,7 +39,7 @@ class AttendsController < ApplicationController
   private
 
   def attend_params
-    params.require(:attend).permit(:meeting_id, :patient_id, :attended)
+    params.require(:attend).permit(:meeting_id, :patient_id, :attended, :checked)
   end
 
 end
