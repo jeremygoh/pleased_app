@@ -4,7 +4,7 @@ before_filter :authenticate_user!
 	def user
 
     if current_user.is_admin?
-      all_past_meetings = Meetings.where(:date => 1.month.ago..Date.today - 1.day)
+      all_past_meetings = Meeting.where(:date => 1.month.ago..Date.today - 1.day)
 
       @all_notifications = []
 
