@@ -17,8 +17,8 @@
   <%=f.label :group %>
   <%#= f.collection_select :group_id, Group.order(:name), :id, :name, include_blank: true %>
 
-  <%= f.collection_select :group_id, Group.order(:name), :group_id, :name, include_blank: true %>
-
+  <%#= collection_select :group_id, Group.order(:name), :group_id, :name, include_blank: true %>
+<%= collection_select :group_id, :group_id, Group.all, :id, :name %>
 
   <%= f.submit "Update Patient" %>
 <% end %>
