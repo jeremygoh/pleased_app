@@ -23,9 +23,6 @@ class AttendsController < ApplicationController
            render json: nil, status: :ok
         end
     end
-
-
-
   end
 
   # def update
@@ -39,7 +36,7 @@ class AttendsController < ApplicationController
   private
 
   def attend_params
-    params.require(:attend).permit(:meeting_id, :patient_id, :attended, :checked)
+    params.permit(:meeting_id, :patient_id, :attended, :checked)
   end
 
 end

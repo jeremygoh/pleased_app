@@ -5,14 +5,19 @@
       <strong>Peer Support Leaders:</strong>
       <ul>
         <% @group.users.each do |user| %>
-          <% if user.role == 2 %>
+          <% if user.role == 3 %>
             <li><%= link_to user.full_name, user_path(user) %></li>
           <% end %>
         <% end %>
       </ul>
   <% else %>
     <strong>This group has no Peer Support Leaders assigned to it yet.</strong>
-  <% end %>
+      <% if current_user.is_admin? %>
+     <ul>
+      <li>Assign a <%= link_to "user", users_path %></li>
+    </ul>
+      <% end %>
+ <% end %>
 </p>
 
 <p>

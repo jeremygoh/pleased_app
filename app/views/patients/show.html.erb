@@ -1,19 +1,22 @@
 <h1>Patient Record</h1>
 <br/>
-<style>
-p {text-indent:10px;}
-</style>
 <div>
-<p>    First Name: <%= @patient.first_name %></p>
-<p>    Last Name: <%= @patient.last_name %></p>
-<p>    Email: <%= @patient.email %></p>
-<p>    Phone: <%= @patient.phone %></p>
-<p>    Group:  <%= link_to @patient.group.name, @patient.group if @patient.group %></p>
+  <p>First Name: <%= @patient.first_name %></p>
+  <p>Last Name: <%= @patient.last_name %></p>
+  <p>Email: <%= @patient.email %></p>
+  <p>Phone: <%= @patient.phone %></p>
+  <p>Group:  <%= link_to @patient.group.name, @patient.group if @patient.group %></p>
 </div>
+
+
+
+
 <% if current_user.is_admin? %>
+  <%= link_to "edit", edit_patient_path  %> |
   <%= link_to "delete", @patient, method: :delete, data: { confirm: "Are you sure?" } %> |
   <%= link_to 'Back', patients_path %>
 <% end %>
+
 <br/>
 <h3>Comments</h3>
 

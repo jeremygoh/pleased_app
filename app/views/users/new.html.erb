@@ -1,0 +1,33 @@
+<%= form_for(@user) do |f| %>
+
+  <div><%= f.label :first_name, "First name*:" %><br />
+  <%= f.text_field :first_name, :autofocus => true %></div>
+
+  <div><%= f.label :last_name, "Last name*:" %><br />
+  <%= f.text_field :last_name %></div>
+
+  <div><%= f.label :phone %><br />
+  <%= f.telephone_field :phone %></div>
+
+  <div><%= f.label :email, "Email*:" %><br />
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password, "Password*:" %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation, "Password Confirmation*:" %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div>
+  <p>Type</p>
+  <%= f.radio_button :role, 1%>
+  <%= label :role, 'Healthcare Professional' %>
+
+  <%= f.radio_button :role, 2%>
+  <%= label :role, 'Peer Support Leader' %>
+  </div>
+
+  <div><%= f.submit "Submit" %></div>
+<% end %>
+
+
