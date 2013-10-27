@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-
-
   def index
     @users = User.all
   end
@@ -11,7 +9,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue
+      flash[:error] = "There is no user with this ID"
+      redirect_to users_path
+    end
   end
 
   def update

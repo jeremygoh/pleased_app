@@ -15,6 +15,10 @@
     <%= f.label :date %><br>
     <%= f.datetime_select :date %>
   </div>
+
+  <%= f.label :group %><br>
+  <%= f.collection_select :group_id, Group.order(:name), :id, :name, include_blank: true %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
