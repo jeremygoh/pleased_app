@@ -1,6 +1,8 @@
 <h1>Groups</h1>
 <ul>
   <% @group.each do |group| %>
-    <li><%= link_to group.name, group %></li>
+  <p>
+    <button type="button" class="btn btn-warning"><%= link_to group.name, group %></button>
+    </p>
   <% end %>
 </ul>
