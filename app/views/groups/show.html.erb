@@ -43,4 +43,4 @@
 
 
 <%= link_to "edit", edit_group_path(@group) %> |
-<%= link_to "delete", @group, method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "delete", @group, method: :delete, data: { confirm: "This will also delete meetings for this group. Are you sure you wish to delete?" } %>
