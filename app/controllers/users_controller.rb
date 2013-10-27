@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
 private
 
-  # def users_params
-  #   params.require(:user).permit(:group_id)
-  # end
+  def users_params
+     params.require(:user).permit(:group_id)
+  end
 end

@@ -5,6 +5,8 @@ class GroupsController < ApplicationController
 
   def new
     @group=Group.new
+    @healths = User.find_all_by_role(1).sort
+    @peers = User.find_all_by_role(2).sort
   end
 
   def create

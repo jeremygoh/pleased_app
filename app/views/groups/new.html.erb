@@ -4,14 +4,35 @@
   <%= f.label :name , "Name*:" %>
   <%= f.text_field :name %>
 
-  <%= f.label :user , "Healthcare Professional:" %>
-  <%= f.collection_select :users, User.find_all_by_role(1).sort, :id, :full_name, include_blank: true %>
 
-  <%= f.label :name , "Peer Support Leader 1:" %>
-  <%= f.collection_select :users, User.find_all_by_role(2).sort, :id, :full_name, include_blank: true %>
+  <label for="group_user">Healthcare Professional:</label>
+  <select id="group_users" name="group[health]">
+     <option value =""></option>
+    <% unless @healths.nil? %>
+      <% @healths.each do |health| %>
+        <option value="<%= health.id %>"><%= health.full_name %></option>
+        <% end %>
+    <% end %>
+  </select>
 
-  <%= f.label :name , "Peer Support Leader 2:" %>
-  <%= f.collection_select :users, User.find_all_by_role(2).sort, :id, :full_name, include_blank: true %>
+    <label for="group_user">Peer Support Leader:</label>
+  <select id="group_users" name="group">
+     <option value =""></option>
+     <% unless @peers.nil? %>
+        <% @peers.each do |peer| %>
+          <option value="<%= peer.id %>"><%= peer.full_name %></option>
+          <% end %>
+      <% end %>
+  </select>
+
+<!--   <label for="group_user">Peer Support Leader:</label>
+  <select id="group_users" name="group[users][3]">
+    <option value =""></option>
+    <%# @peers.each do |peer| %>
+
+      <option value="<%#= peer.id %>"><%#= peer.full_name %></option>
+      <%# end %>
+  </select> -->
 
   <%= f.submit "Create Group" %>
 
