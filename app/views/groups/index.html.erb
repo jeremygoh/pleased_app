@@ -1,9 +1,11 @@
 <h1>Groups</h1>
-<ul>
-  <% @group.each do |group| %>
-  </br>
-  <p>
-    <button type="button" class="btn btn-warning"><%= link_to group.name, group %></button>
-  </p>
-  <% end %>
-</ul>
+
+<% @group.each do |group| %>
+<p>
+  <a href="<%= group_path group.id %>">
+    <button type="button" class="btn btn-warning"><%= group.name %></button>
+  </a>
+</p>
+<% end %>
+<%= link_to "New group", new_group_path %>
+

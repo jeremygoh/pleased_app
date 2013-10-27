@@ -33,7 +33,7 @@
   <strong>Meetings:</strong>
     <ul>
     <% @group.meetings.each do |meeting| %>
-      <li><%= link_to meeting.date %></li>
+      <li><%= link_to meeting.date, meeting %></li>
     <% end %>
     </ul>
   <% else %>
@@ -42,4 +42,5 @@
 </p>
 
 
+<%= link_to "edit", edit_group_path(@group) %> |
 <%= link_to "delete", @group, method: :delete, data: { confirm: "Are you sure?" } %>

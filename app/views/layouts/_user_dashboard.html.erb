@@ -18,7 +18,6 @@
           <!-- Everything you want hidden at 940px or less, place within here -->
           <div class="nav-collapse collapse">
 
-
             <%= link_to "Groups", groups_path, "class" => "brand" %>
             <%= link_to "Patients", patients_path, "class" => "brand" %>
             <%= link_to "Meetings", meetings_path, "class" => "brand" %>
@@ -28,6 +27,8 @@
             <% end %>
             <!-- .nav, .navbar-search, .navbar-form, etc -->
           </div>
+
+          <span class="current_time"></span>
 
         </div>
       </div>

@@ -12,8 +12,20 @@
  *= require_tree .
  */
 
-
 #attend-notifications{
   height: 30px;
   background: #dff0d8;
+  position: absolute;
+  width: 100%;
+}
+
+div.attend-user-form form {
+  margin: 0;
+}
+
+span.current_time {
+  float: right;
+  display: block;
+  font-size: 1.2em;
+  padding: 10px 0;
 }

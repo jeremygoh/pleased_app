@@ -15,3 +15,52 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+  updateTime();
+
+  $(".attend_checkbox").on("click", function(event){
+    checkbox = $(this)
+    parent_form = $(this).parent();
+    var valuesToSubmit = $(parent_form).serialize();
+    meeting_id = $(parent_form).children('.meeting').val()
+    url = '/meetings/' + meeting_id + "/attends"
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: valuesToSubmit,
+        success: function(){
+          console.log("sdsdsd");
+          $('body').prepend('<div id="attend-notifications"></div>')
+          $('#attend-notifications').text("Successfully updated attendance")
+          $('#attend-notifications').fadeOut(2000)
+        }
+        }
+      )
+  });
+
+
+});
+
+function pad2(number)
+{
+  return number < 10 ? '0'+number : number;
+}
+
+function updateTime()
+{
+  var date = new Date();
+
+  var month = date.getMonth()+1;
+  var day = date.getDate();
+  var year = date.getFullYear();
+
+  var hour = pad2(date.getHours());
+  var minute = pad2(date.getMinutes());
+  var second = pad2(date.getSeconds());
+
+  var str = day+'/'+month+'/'+year;//+', '+hour+':'+minute+':'+second;
+
+  $('span.current_time').html(str);
+  window.setTimeout(updateTime, 60000);
+}

@@ -9,12 +9,34 @@ before_filter :authenticate_user!
       @all_notifications = []
 
       all_past_meetings.each do |meeting|
-        Patients.all.each do |patient|
+        Patient.all.each do |patient|
           if Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).empty? || Attend.were(:patient_id => patient.id, :meeting_id => meeting.id).first.attended
             @all_notifications << [patient.id, meeting.id]
           end
         end
       end
+
+
+    elsif current_user.health_pro?
+      all_past_meetings = Meeting.where(:date => 1.month.ago..Date.today - 1.day)
+
+      @all_notifications = []
+
+      all_past_meetings.each do |meeting|
+        Patient.all.each do |patient|
+          if Attend.where(:patient_id => patient.id, :meeting_id => meeting.id).empty? || Attend.were(:patient_id => patient.id, :meeting_id => meeting.id).first.attended
+            @all_notifications << [patient.id, meeting.id]
+          end
+        end
+      end
+
+        @past_meetings = Meeting.where(:date => 1.month.ago..Date.today - 1.day)
+
+        @today_meetings = Meeting.where(:date => Date.today.beginning_of_day..Date.today.end_of_day)
+
+        @future_meetings = Meeting.where(:date => Date.today + 1.day..Date.today + 30.day)
+
+
     else
         unless current_user.group_id.nil?
           user_group = Group.find(current_user.group_id)
