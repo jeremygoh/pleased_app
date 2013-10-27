@@ -11,7 +11,7 @@
             <div class="panel-body">
                 <div class="alert alert-safety">
               <%if !@all_notifications.nil? && !@all_notifications.empty? %>
-                <div class="alert alert-danger">To Follow Up:
+                <div class="alert alert-danger">
                   <table class="table">
                     <thead>
                       <th>Last Name</th>
@@ -21,6 +21,7 @@
                       <th>Peer Support Leaders</th>
                       <th>Followed Up?</th>
                     </thead>
+                    <tbody>
                       <% @all_notifications.each do |notification| %>
                         <tr id="patient-<%=notification[0]%>-meeting-<%=notification[1]%>">
                           <td><%= Patient.find(notification[0]).last_name %></td>
@@ -28,36 +29,29 @@
                           <td><%= Meeting.find(notification[1]).date %></td>
                           <td><%= ((Time.now - Meeting.find(notification[1]).date)/86400).floor.to_s + " days" %></td>
                           <td>
-                            <% if !Meeting.find(notification[0]).users.nil? %>
+                            <% if !Meeting.find(notification[1]).users.nil? %>
                                       <ol>
-                                      <% Meeting.find(notification[0]).users.each do |user| %>
+                                      <% Meeting.find(notification[1]).users.each do |user| %>
                                           <li><%= user.full_name %></li>
                                       <% end %>
 
                                 </ol>
                             <% end %>
                           </td>
+                          <td>
+                            <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
+                              <%= hidden_field_tag "checked", nil %>
+                              <input class="attend_checked" name="checked" type="checkbox" />
+                              <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                              <input class="patient" name="patient_id" type="hidden" value="<%= notification[0] %>" />
+                              <input class="meeting" name="meeting_id" type="hidden" value="<%= notification[1] %>" />
+                            </form>
+                          </td>
+                        </tr>
                         <% end %>
                         <!-- for the followed up boxes -->
-                        </tr>
+                        </tbody>
                       </table>
-
-                        <% @all_notifications.each do |notification| %>
-                            <div class="attend-checked-form">
-                              <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
-                                <%= hidden_field_tag "attend[checked]", nil %>
-                                <input class="attend_checked" name="attend[checked]" type="checkbox" />
-                                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-                                <input class="patient" name="attend[patient_id]" type="hidden" value="<%= notification[0] %>" />
-                                <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= notification[1] %>" />
-                              </form>
-                            </div>
-                          <% end %>
-
-
-
-
-
                   </div>
               <% end %>
             </div>
@@ -102,8 +96,19 @@
                                 </ol>
                             <% end %>
                           </td>
+                          <td>
+                             <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
+                               <%= hidden_field_tag "checked", nil %>
+                               <input class="attend_checked" name="checked" type="checkbox" />
+                               <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                               <input class="patient" name="patient_id" type="hidden" value="<%= notification[0] %>" />
+                               <input class="meeting" name="meeting_id" type="hidden" value="<%= notification[1] %>" />
+                             </form>
+                          </td>
+                        </tr>
                         <% end %>
                         <!-- for the followed up boxes -->
+
                         <td>         <% @all_notifications.each do |notification| %>
                             <div class="attend-checked-form">
                               <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
@@ -120,16 +125,12 @@
                       </table>
 
 
+
                   </div>
               <% end %>
             </div>
 
         </div>
-
-
-
-
-
 
       <div class="panel-heading">
           <h4 class="panel-title" style="color: black">Meetings</h4>
@@ -189,7 +190,7 @@
                   <th>First Name</th>
                   <th>Meeting Date</th>
                   <th>Days since meeting</th>
-                  <th>Add Comment</th>
+                  <th>Follow-Up</th>
                 </thead>
                   <% @notifications.each do |notification| %>
                     <tr id="patient-<%=notification[0]%>-meeting-<%=notification[1]%>">
@@ -197,6 +198,7 @@
                       <td><%= Patient.find(notification[0]).first_name %></td>
                       <td><%= Meeting.find(notification[1]).date %></td>
                       <td><%= ((Time.now - Meeting.find(notification[1]).date)/86400).floor.to_s + " days" %></td>
+
                       <td>    <% @notifications.each do |notification| %>
                             <div class="attend-checked-form">
                               <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
@@ -212,6 +214,7 @@
                     </tr>
                   <% end %>
                   </table>
+
 
 
           <% end %>
@@ -265,7 +268,12 @@
         </div>
 
         <div class="panel-body">
-          <div class="alert alert-safety">Group 4 </div>
+          <div class="alert alert-safety">
+          <% if @group %>
+             <p><% @group.name %></p>
+            <% end %>
+
+          </div>
         </div>
     </div>
 <% end %>
