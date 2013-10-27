@@ -1,7 +1,7 @@
 <h1> Edit Comment</h1>
   <%= form_for(@comment) do |c| %>
 
-  <%= c.text_field :comment %>
+    <%= c.text_area :comment, :rows => "2", :class => "span6" %><br>
 
   <%= c.submit "Edit Comment" %>
 <% end %>

@@ -1,6 +1,7 @@
 
 <% if current_user.is_admin? %>
-    <h4>Administrator DashBoard</h4>
+      <h4>Administrator DashBoard</h4>
+
 
         <div>
             <div class="panel-heading" style="border: solid; size: 1px;">
@@ -42,9 +43,90 @@
 
         </div>
 
+<% elsif current_user.health_pro? %>
 
-<% elsif current_user %>
-    <h4>Dashboard for Peer Leaders and Health Professionals</h4>
+    <h4>Healthcare Professional Dashboard</h4>
+
+
+    <div>
+        <div class="panel-heading" style="border: solid; size: 1px;">
+          <h2 class="panel-title" style="color: black">Follow-Ups</h2>
+        </div>
+
+        <div class="panel-body" style="border: solid;">
+          <% if @notifications.nil?%>
+            "<p>Nothing to follow up.</p>"
+          <% end %>
+          <%if !@notifications.nil? && !@notifications.empty? %>
+            <div class="alert alert-danger">To Follow Up:
+              <table class="table">
+                <thead>
+                  <th>Last Name</th>
+                  <th>First Name</th>
+                  <th>Meeting Date</th>
+                  <th>Days since meeting</th>
+                  <th>Add Comment</th>
+                </thead>
+                  <% @notifications.each do |notification| %>
+                    <tr>
+                      <td><%= Patient.find(notification[0]).last_name %></td>
+                      <td><%= Patient.find(notification[0]).first_name %></td>
+                      <td><%= Meeting.find(notification[1]).date %></td>
+                      <td><%= ((Time.now - Meeting.find(notification[1]).date)/86400).floor.to_s + " days" %></td>
+                    </tr>
+                    <table>
+
+
+                  <% end %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+
+
+
+      <div class="panel-heading" style="border: solid; size: 1px;">
+          <h2 class="panel-title" style="color: black">Meetings</h2>
+      </div>
+
+    <div class="panel-body" style= "border: solid;">
+        <div class="alert alert-safety">
+         <h4>Past meetings</h4>
+         <% unless @past_meetings.nil? %>
+              <% @past_meetings.each do |meeting| %>
+
+            <p><%= meeting.date %></p>
+
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="alert alert-info">
+         <h4>Today's meetings</h4>
+         <% unless @today_meetings.nil? %>
+                <% @today_meetings.each do |meeting| %>
+
+              <p><%= meeting.date %></p>
+
+              <% end %>
+          <% end %>
+        </div>
+
+
+          <div class="alert alert-safety">
+            <h4>Future meetings</h4>
+            <% unless @future_meetings.nil? %>
+                <% @future_meetings.each do |meeting| %>
+
+               <p><%= meeting.date %></p>
+
+              <% end %>
+            <% end %>
+          </div>
+    </div>
+
+<% else current_user %>
+    <h4>Dashboard for Peer Leaders</h4>
 
     <div>
         <div class="panel-heading" style="border: solid; size: 1px;">
@@ -69,7 +151,7 @@
                       <td><%= Meeting.find(notification[1]).date %></td>
                       <td><%= ((Time.now - Meeting.find(notification[1]).date)/86400).floor.to_s + " days" %></td>
                     </tr>
-
+                    <table>
 
 
                   <% end %>
@@ -78,7 +160,7 @@
         </div>
     </div>
 
-    <p></p>
+
 
       <div class="panel-heading" style="border: solid; size: 1px;">
           <h2 class="panel-title" style="color: black">Meetings</h2>

@@ -17,11 +17,11 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    if admin
-      true
-    else
-      false
-    end
+    self.admin == true
+  end
+
+  def health_pro?
+    self.role == 1
   end
 
 end
