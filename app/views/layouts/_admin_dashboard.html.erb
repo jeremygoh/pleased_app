@@ -1,38 +1,68 @@
- <div>
-    <nav class="navbar navbar-default" role="navigation">
-    <div class="navbar">
-
-      <div class="navbar-inner">
-        <div class="container">
-
-          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-
-          <!-- Be sure to leave the brand out there if you want it shown -->
-          <%= link_to "Home", root_path, "class" => "brand" %>
-
-          <!-- Everything you want hidden at 940px or less, place within here -->
-          <div class="nav-collapse collapse">
-
-            <%= link_to "Users", users_path, "class" => "brand" %>
-            <%= link_to "Groups", groups_path, "class" => "brand" %>
-            <%= link_to "Patients", patients_path, "class" => "brand" %>
-            <%= link_to "Meetings", meetings_path, "class" => "brand" %>
-            <%= link_to "Account", edit_user_registration_path, "class" => "brand" %>
-            <% if current_user %>
-              <%= link_to "Log out", destroy_user_session_path, :method => :delete, "class" => "brand" %>
+<div class="navbar">
+  <nav class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="#">Home</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+      
+      <ul class="nav">
+  		<li class="dropdown">
+  		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+   		   Groups
+ 		     <b class="caret"></b>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li><a href="/groups/new">Add New Group</a></li>
+		       <li><%= link_to "Manage Groups", groups_path %></li>
+ 		   </ul>
+		  </li>
+		  <li class="dropdown">
+  		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+   		   Users
+ 		     <b class="caret"></b>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li><a href="#">Add New User</a></li>
+		       <li><a href="#">Manage Users</a></li>
+ 		   </ul>
+		  </li>
+		    <li class="dropdown">
+  		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+   		   Meetings
+ 		     <b class="caret"></b>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li><a href="/meetings/new">Add New Meeting</a></li>
+		       <li><%= link_to "Manage Meetings", meetings_path %></li>
+ 		   </ul>
+		  </li>
+		    <li class="dropdown">
+  		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+   		   Patients
+ 		     <b class="caret"></b>
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li><a href="/patients/new">Add New Patient</a></li>
+		       <li><%= link_to "Manage Patients", patients_path %></li>
+ 		   </ul>
+		  </li>
+		   <% if current_user %>
+        	<%= link_to "Log out", destroy_user_session_path, :method => :delete, "class" => "brand" %>
             <% end %>
-            <!-- .nav, .navbar-search, .navbar-form, etc -->
-          </div>
-
-          <span class="current_time"></span>
-
-        </div>
+         </ul>
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
       </div>
+ 
     </div>
-    </nav>
-    </div>
+  </nav>
+</div>
