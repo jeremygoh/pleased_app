@@ -2,14 +2,16 @@
 
 <p>
    <% if @group.users.count > 0 %>
-    <strong>Peer Leaders/Health Professionals:</strong>
-    <ul>
-    <% @group.users.each do |user| %>
-      <li><%= link_to user.first_name+' '+user.last_name, member %></li>
-    <% end %>
-    </ul>
+      <strong>Peer Support Leaders:</strong>
+      <ul>
+        <% @group.users.each do |user| %>
+          <% if user.role == 2 %>
+            <li><%= link_to user.full_name, user_path(user) %></li>
+          <% end %>
+        <% end %>
+      </ul>
   <% else %>
-    <strong>This group has no users assigned to it yet.</strong>
+    <strong>This group has no Peer Support Leaders assigned to it yet.</strong>
   <% end %>
 </p>
 
@@ -17,8 +19,8 @@
   <% if @group.patients.count > 0 %>
     <strong>Members:</strong>
     <ul>
-    <% @group.patients.each do |member| %>
-      <li><%= link_to member.first_name+' '+member.last_name, member %></li>
+    <% @group.patients.each do |patient| %>
+      <li><%= link_to patient.first_name + ' ' +patient.last_name, patient_path(patient) %></li>
     <% end %>
     </ul>
   <% else %>

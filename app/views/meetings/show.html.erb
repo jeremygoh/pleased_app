@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Date:</strong>
+  <strong>Meeting Date:</strong>
   <%= @meeting.date %>
 </p>
 
@@ -9,6 +7,26 @@
   <strong>Group:</strong>
   <%= @meeting.group.name %>
 </p>
+
+<h4>Healthcase Professional</h4>
+<% @meeting.group.users.each do |user| %>
+    <% if user.role=="1" %>
+      <p><%= user.full_name %></p>
+    <% end %>
+  <% end %>
+
+<h4>Peer Leaders</h4>
+  <% @meeting.group.users.each do |user| %>
+    <% if user.role=="2" %>
+      <p><%= user.full_name %></p>
+    <% end %>
+  <% end %>
+
+
+
+
+
+
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
