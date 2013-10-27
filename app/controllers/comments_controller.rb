@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       redirect_to '/patients/' + @comment.patient.id.to_s
     else
       flash[:error] = @comment.errors.full_messages.join('<br>')
-      render 'patients/show'
+      redirect_to patient_url(@patient)
     end
   end
 
