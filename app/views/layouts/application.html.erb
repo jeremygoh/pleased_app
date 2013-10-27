@@ -23,8 +23,12 @@
     <% end %>
   <% end %>
 
-<img src="https://lh6.googleusercontent.com/-Yjr8_GXULjo/UmwmNCklCqI/AAAAAAAAAB8/HXtW0ceeWEY/w253-h253-p/2013-10-26" width=100 height=100 align="middle">
 
+
+
+<a href=/dashboard> <img src="https://lh6.googleusercontent.com/-Yjr8_GXULjo/UmwmNCklCqI/AAAAAAAAAB8/HXtW0ceeWEY/w253-h253-p/2013-10-26" width=100 height=100 align="middle"></a>
+
+<nav class="navbar navbar-default" role="navigation">
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container">
@@ -37,11 +41,12 @@
       </a>
  
       <!-- Be sure to leave the brand out there if you want it shown -->
-      <a class="brand" href="#">Home</a>
+      <a class="brand" href=/dashboard>Home</a>
  
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse collapse">
-
+      
+		
       	<%= link_to "Groups", groups_path, "class" => "brand" %>
       	<%= link_to "Patients", patients_path, "class" => "brand" %>
       	<%= link_to "Meetings", meetings_path, "class" => "brand" %>
@@ -59,7 +64,7 @@
 <div class="container">
 	<%= yield %>
 </div>
-
+</nav>
 
 
 
