@@ -6,6 +6,7 @@ class MeetingsController < ApplicationController
   end
 
   def show
+    @patients = Meeting.joins(:groups).where('groups.id = params[:id]')
   end
 
   def new

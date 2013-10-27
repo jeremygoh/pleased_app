@@ -7,6 +7,8 @@
   <strong>Group:</strong>
   <%= @meeting.group.name %>
 </p>
+<h4>Patients</h4>
+<% @patients %>
 
 <h4>Healthcase Professional</h4>
 <% @meeting.group.users.each do |user| %>
@@ -21,9 +23,6 @@
       <p><%= user.full_name %></p>
     <% end %>
   <% end %>
-
-
-
 
 
 
