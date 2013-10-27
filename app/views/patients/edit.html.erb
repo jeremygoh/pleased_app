@@ -13,7 +13,12 @@
   <%=f.label :phone %>
   <%= f.telephone_field :phone %>
 
-  <%= f.collection_select :group_id, Group.order(:name), :id, :name, include_blank: true %>
+
+  <%=f.label :group %>
+  <%#= f.collection_select :group_id, Group.order(:name), :id, :name, include_blank: true %>
+
+  <%= f.collection_select :group_id, Group.order(:name), :group_id, :name, include_blank: true %>
+
 
   <%= f.submit "Update Patient" %>
 <% end %>

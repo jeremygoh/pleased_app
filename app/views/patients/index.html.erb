@@ -1,5 +1,6 @@
 <h1>Patient Records</h1>
-<table style="width: 960px; height: 81px;" border="1">
+
+<table class="table table-hover">
   <thead align="left">
     <tr>
       <th>Last Name</th>
@@ -11,7 +12,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="table table-hover">
     <% @patients.each do |patient| %>
     <tr>
       <td><%= patient.last_name %></td>
@@ -24,9 +25,10 @@
       <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
-  </tbody>
+</tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Patient', new_patient_path %>
+<p>
+    <%= link_to 'New Patient', new_patient_path %>
+</p>

@@ -4,6 +4,9 @@
 <p>Last Name: <%= @patient.last_name %></p>
 <p>Email: <%= @patient.email %></p>
 <p>Phone: <%= @patient.phone %></p>
+<p>Group:  <%= @patient.group.name unless @patient.group.nil? %></p>
+
+
 
 <h2>Comments</h2>
 

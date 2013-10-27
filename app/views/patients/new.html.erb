@@ -13,8 +13,7 @@
   <%=f.label :phone %>
   <%= f.telephone_field :phone %>
 
-  <%#= f.select :colour, options_for_select([["Red", "red"], ["Green", "green"]], @link.colour) %>
-
+  <%=f.label :group %>
   <%= f.collection_select :group_id, Group.order(:name), :id, :name, include_blank: true %>
 
   <%= f.submit "Create Patient" %>

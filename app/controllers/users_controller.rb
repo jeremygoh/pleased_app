@@ -5,12 +5,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    begin
-      @users = User.find(params[:id])
-    rescue
-      flash[:error] = "There is no user with this ID"
-      redirect_to users_path
-    end
+    @user = User.find(params[:id])
   end
 
   def show
@@ -23,10 +18,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @users = User.find(params[:id])
-    if @users.update_attributes(users_params)
+    @user = User.find(params[:id])
+    if @user.update_attributes(users_params)
       flash[:success] = "User record updated successfully"
-      redirect_to @users
+      redirect_to @user
     else
       render 'edit'
     end
@@ -41,6 +36,6 @@ class UsersController < ApplicationController
 private
 
   def users_params
-    params.require(:user).permit(:group_id)
+     params.require(:user).permit(:group_id)
   end
 end
