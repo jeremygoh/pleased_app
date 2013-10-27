@@ -5,8 +5,23 @@ before_filter :admin_filter
     @users = User.all
   end
 
+  def new
+    @user = User.new
+    @group = Group.all
+  end
+
   def edit
     @user = User.find(params[:id])
+  end
+
+  def create
+    @user = User.new(users_params)
+    if @user.save
+      flash[:success] = "User created successfully"
+      redirect_to '/users'
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -37,6 +52,6 @@ before_filter :admin_filter
 private
 
   def users_params
-     params.require(:user).permit(:first_name, :last_name, :email, :phone, :group_id)
+     params.require(:user).permit(:first_name, :last_name, :email, :phone, :group_id, :password, :password_confirmation, :role)
   end
 end
