@@ -11,7 +11,9 @@
   <% else %>
     <strong>This group has no users assigned to it yet.</strong>
   <% end %>
+</p>
 
+<p>
   <% if @group.patients.count > 0 %>
     <strong>Members:</strong>
     <ul>
@@ -22,7 +24,9 @@
   <% else %>
     <strong>This group has no patients assigned to it yet.</strong>
   <% end %>
+</p>
 
+<p>
   <% if @group.meetings.count > 0 %>
   <strong>Meetings:</strong>
     <ul>
