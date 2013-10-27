@@ -29,3 +29,7 @@ span.current_time {
   font-size: 1.2em;
   padding: 10px 0;
 }
+
+div.navbar a:hover {
+  background-color: #ddd;
+}
