@@ -33,8 +33,7 @@
       <form action="/meetings/<%= @meeting.id %>/attends" method="post" class="attend_form form-inline" role="form">
         <%= hidden_field_tag "attend[attended]", nil %>
         <input class="attend_checkbox" name="attend[attended]" type="checkbox" <%= 'checked value="1"' if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? && Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).first.attended == true %> />
-        <%= patient.last_name %>
-        <%= patient.first_name %>
+        <%= link_to patient.last_name + ", " + patient.first_name , patient %>
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
         <input class="patient" name="attend[patient_id]" type="hidden" value="<%= patient.id %>" />
         <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= @meeting.id %>" />
