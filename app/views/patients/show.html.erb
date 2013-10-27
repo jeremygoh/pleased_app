@@ -34,6 +34,7 @@ p {text-indent:10px;}
   <th>Author</th>
   <th>Comment</th>
   <th>Date</th>
+  <th>Updated</th>
   <th colspan="2">Actions</th>
 
 </tr>
@@ -43,6 +44,7 @@ p {text-indent:10px;}
   <td><%= comment.user.first_name %> <%= comment.user.last_name %></td>
   <td><%= comment.comment %></td>
   <td><%= comment.created_at %></td>
+  <td><%= comment.updated_at unless comment.updated_at == comment.created_at%></td> 
   <td><%= link_to comment.meeting.date, meeting_path(comment.meeting.id) if comment.meeting %></td>
   <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
   <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

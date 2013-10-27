@@ -46,3 +46,25 @@
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %>
 
+<script type="text/javascript">
+  $(".attend_checkbox").on('click', function(event){
+    checkbox = $(this)
+    parent_form = $(this).parent();
+    var valuesToSubmit = $(parent_form).serialize();
+    meeting_id = $(parent_form).children('.meeting').val()
+    url = '/meetings/' + meeting_id + "/attends"
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: valuesToSubmit,
+        success: function(){
+          $('body').prepend('<div id="attend-notifications"></div>')
+          $('#attend-notifications').text("Successfully updated attendance")
+          $('#attend-notifications').fadeOut(2000)
+        }
+        }
+      )
+  });
+
+
+</script>
