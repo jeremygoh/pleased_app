@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131027180710) do
+ActiveRecord::Schema.define(version: 20131027185543) do
 
   create_table "attends", force: true do |t|
     t.integer "meeting_id"
     t.integer "patient_id"
     t.boolean "attended"
+    t.boolean "checked"
   end
 
   add_index "attends", ["meeting_id"], name: "index_attends_on_meeting_id"
