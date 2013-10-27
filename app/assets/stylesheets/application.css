@@ -22,3 +22,10 @@
 div.attend-user-form form {
   margin: 0;
 }
+
+span.current_time {
+  float: right;
+  display: block;
+  font-size: 1.2em;
+  padding: 10px 0;
+}
