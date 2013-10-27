@@ -1,19 +1,9 @@
 <h1>Patient Record</h1>
 
-<p>
-  <% if @patient.group %>
-    <strong>Group:</strong>
-    <%= link_to @patient.group.name, @patient.group %>
-  <% else %>
-    <strong>This patient was not added to any group yet.</strong>
-  <% end %>
-</p>
-
 <p>First Name: <%= @patient.first_name %></p>
 <p>Last Name: <%= @patient.last_name %></p>
 <p>Email: <%= @patient.email %></p>
 <p>Phone: <%= @patient.phone %></p>
-<p>Group: <%= @patient.group.name unless @patient.group.nil? %></p>
 
 <h2>Comments</h2>
 
@@ -45,7 +35,7 @@
 	<td><%= comment.comment %></td>
 	<td><%= comment.created_at %></td>
 	<td><%= link_to comment.meeting.date, meeting_path(comment.meeting.id) if comment.meeting %></td>
-  <!--<td><%= link_to 'Edit', edit_comment_path(comment) %></td>-->
+  <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
   <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
 <% end %>
