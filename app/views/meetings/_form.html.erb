@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :date %><br>
+    <%= f.label :date, "Date*:" %><br>
     <%= f.datetime_select :date %>
   </div>
 
-  <%= f.label :group %><br>
+  <%= f.label :group, "Group*:" %><br>
   <%= f.collection_select :group_id, Group.order(:name), :id, :name, include_blank: true %>
 
   <div class="actions">
