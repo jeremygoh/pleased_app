@@ -4,7 +4,7 @@
 
 
         <div>
-            <div class="panel-heading" style="border: solid; size: 1px;">
+            <div class="panel-heading">
               <h2 class="panel-title" style="color: black">Follow-Ups</h2>
             </div>
 
@@ -49,11 +49,12 @@
 
 
     <div>
-        <div class="panel-heading" style="border: solid; size: 1px;">
-          <h2 class="panel-title" style="color: black">Follow-Ups</h2>
+        <div class="panel-heading">
+          <h4 class="panel-title" style="color: black">Follow-Ups</h4>
         </div>
 
-        <div class="panel-body" style="border: solid;">
+        <div class="panel-body" >
+           <div class="alert alert-safety">
           <% if @notifications.nil?%>
             "<p>Nothing to follow up.</p>"
           <% end %>
@@ -82,6 +83,7 @@
           <% end %>
         </div>
     </div>
+
 
 
 
@@ -162,13 +164,13 @@
 
 
 
-      <div class="panel-heading" style="border: solid; size: 1px;">
-          <h2 class="panel-title" style="color: black">Meetings</h2>
+      <div class="panel-heading">
+          <h4 class="panel-title" style="color: black">Meetings</h4>
       </div>
 
-    <div class="panel-body" style= "border: solid;">
+    <div class="panel-body">
         <div class="alert alert-safety">
-         <h4>Past meetings</h4>
+         <h5>Past meetings</h5>
          <% unless @past_meetings.nil? %>
               <% @past_meetings.each do |meeting| %>
 
@@ -191,7 +193,7 @@
 
 
           <div class="alert alert-safety">
-            <h4>Future meetings</h4>
+            <h5>Future meetings</h5>
             <% unless @future_meetings.nil? %>
                 <% @future_meetings.each do |meeting| %>
 
@@ -202,11 +204,11 @@
           </div>
     </div>
     <div>
-        <div class="panel-heading" style="border: solid; size: 1px;">
-          <h2 class="panel-title" style="color: black">My Groups</h2>
+        <div class="panel-heading">
+          <h4 class="panel-title" style="color: black">My Groups</h4>
         </div>
 
-        <div class="panel-body" style="border: solid;">
+        <div class="panel-body">
           <div class="alert alert-safety">Group 4 </div>
         </div>
     </div>
