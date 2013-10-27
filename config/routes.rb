@@ -6,7 +6,8 @@ PleasedApp::Application.routes.draw do
 
   resources :meetings
 
-  devise_for :users
+  devise_for :users, :path_prefix => 'my'
+  resources :users
   resources :patients
   resources :groups
   resources :comments, except: [:new, :index, :show]

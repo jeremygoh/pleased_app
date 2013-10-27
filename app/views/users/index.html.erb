@@ -1,0 +1,35 @@
+<h1>User Records</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Group</th>
+    </tr>
+  </thead>
+  <% if @users %>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.last_name %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phone %></td>
+          <% if user.groups %>
+            <td><% user.groups.each do |group| %>
+                <%= group.name %><br />
+              <% end %>
+          <% end %>
+          <td><%= link_to 'Edit', edit_user_path(user) %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+  <% end %>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
