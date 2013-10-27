@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path
+  end
+
   def admin_filter
       redirect_to root_path unless current_user && current_user.is_admin?
   end
