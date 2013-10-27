@@ -6,7 +6,7 @@
     </div>
 
     <div class="panel-body" style="border: solid;">
-      <%if !@notifications.empty? %>
+      <%if !@notifications.nil? && !@notifications.empty? %>
         <div class="alert alert-danger">To Follow Up:
           <table class="table">
             <thead>
@@ -41,29 +41,35 @@
 <div class="panel-body" style= "border: solid;">
     <div class="alert alert-safety">
      <h4>Past meetings</h4>
-        <% @past_meetings.each do |meeting| %>
+     <% unless @past_meetings.nil? %>
+          <% @past_meetings.each do |meeting| %>
 
-      <p><%= meeting.date %></p>
+        <p><%= meeting.date %></p>
 
+        <% end %>
       <% end %>
     </div>
 
     <div class="alert alert-info">
      <h4>Today's meetings</h4>
-        <% @today_meetings.each do |meeting| %>
+     <% unless @today_meetings.nil? %>
+            <% @today_meetings.each do |meeting| %>
 
-      <p><%= meeting.date %></p>
+          <p><%= meeting.date %></p>
 
+          <% end %>
       <% end %>
     </div>
 
 
       <div class="alert alert-safety">
         <h4>Future meetings</h4>
-          <% @future_meetings.each do |meeting| %>
+        <% unless @future_meetings.nil? %>
+            <% @future_meetings.each do |meeting| %>
 
-          <p><%= meeting.date %></p>
+           <p><%= meeting.date %></p>
 
+          <% end %>
         <% end %>
       </div>
 </div>
