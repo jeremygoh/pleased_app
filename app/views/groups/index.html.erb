@@ -1,6 +1,8 @@
-<h1>Groups</h1>
-<ul>
-  <% @group.each do |group| %>
-    <li><%= link_to group.name, group %></li>
-  <% end %>
-</ul>
+<h2>Groups</h2>
+
+
+<% @group.each do |group| %>
+<p>
+	<button type="button" class="btn btn-warning"><%= link_to group.name, group %></button>
+</p>
+<% end %>
