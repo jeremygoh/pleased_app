@@ -11,12 +11,19 @@ class AttendsController < ApplicationController
       existing_records.each do |record|
         record.destroy
         attend = Attend.new(attend_params)
-        attend.save
+         if attend.save
+          render json: nil, status: :ok
+        end
       end
     else
       attend = Attend.new(attend_params)
-      attend.save
+         if attend.save
+           render json: nil, status: :ok
+        end
     end
+
+
+
   end
 
   # def update

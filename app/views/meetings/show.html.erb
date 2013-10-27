@@ -39,8 +39,7 @@
     <input class="patient" name="attend[patient_id]" type="hidden" value="<%= patient.id %>" />
     <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= @meeting.id %>" />
     <input class="attend_checkbox" name="attend[attended]" type="checkbox" <%= 'checked value="1"' if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? && Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).first.attended == true %> />
-    <input type="submit" value="submit form" />
-
+    </form>
   </div>
   <% end %>
 
