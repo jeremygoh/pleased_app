@@ -1,21 +1,21 @@
 <p>
-  <strong>Meeting Date:</strong>
+  <h4>Meeting Date:</h4>
   <%= @meeting.date %>
 </p>
 
 <p>
-  <strong>Group:</strong>
+  <h4>Group:</h4>
   <%= @meeting.group.name %>
 </p>
 
-<h4>Healthcase Professional</h4>
+<strong>Healthcare Professional</strong>
 <% @meeting.group.users.each do |user| %>
     <% if user.role=="1" %>
       <p><%= user.full_name %></p>
     <% end %>
   <% end %>
 
-<h4>Peer Leaders</h4>
+<strong>Peer Leaders</strong>
   <% @meeting.group.users.each do |user| %>
     <% if user.role=="2" %>
       <p><%= user.full_name %></p>
@@ -24,7 +24,7 @@
 
 
 
-<h4>Patients</h4>
+<strong>Patients</strong>
   <% @meeting.group.patients.each do |patient| %>
   <div class="attend-user-form">
       <form action="/meetings/<%= @meeting.id %>/attends" method="post" class="attend_form">
