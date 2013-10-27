@@ -27,7 +27,7 @@
 <h4>Patients</h4>
   <% @meeting.group.patients.each do |patient| %>
   <div class="attend-user-form">
-      <form action="/meetings/<%= @meeting.id %>/attends" method="post">
+      <form action="/meetings/<%= @meeting.id %>/attends" method="post" class="attend_form">
         <% if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? %>
           <input name="_method" type="hidden" value="patch" />
           <%= hidden_field_tag "attend[attended]", nil %>
@@ -36,9 +36,9 @@
     <%= patient.last_name %>
     <%= patient.first_name %>
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-    <input id="patient" name="attend[patient_id]" type="hidden" value="<%= patient.id %>" />
-    <input id="attend" name="attend[meeting_id]" type="hidden" value="<%= @meeting.id %>" />
-    <input id="attend" name="attend[attended]" type="checkbox" <%= 'checked value="1"' if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? && Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).first.attended %> />
+    <input class="patient" name="attend[patient_id]" type="hidden" value="<%= patient.id %>" />
+    <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= @meeting.id %>" />
+    <input class="attend_checkbox" name="attend[attended]" type="checkbox" <%= 'checked value="1"' if !Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).empty? && Attend.where(:patient_id => patient.id, :meeting_id => @meeting.id).first.attended %> />
     <input type="submit" value="submit form" />
 
   </div>

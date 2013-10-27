@@ -68,4 +68,23 @@
 
 
 </body>
+
+<script type="text/javascript">
+
+  $(".attend_checkbox").on("click", function(event){
+    event.preventDefault();
+    checkbox = $(this)
+    parent_form = $(this).parent();
+    var valuesToSubmit = $(parent_form).serialize();
+    meeting_id = $(parent_form).children('.meeting').val()
+    url = '/meetings/' + meeting_id + "/attends"
+    $.post(url, valuesToSubmit, function(data)
+    {
+      $(checkbox).prop("checked", "checked")
+    })
+  })
+
+</script>
+
+
 </html>
