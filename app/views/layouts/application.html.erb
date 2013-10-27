@@ -7,7 +7,8 @@
   <%= csrf_meta_tags %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
 </head>
 <body>
   <% flash.each do |name, msg| %>
@@ -22,7 +23,48 @@
     <% end %>
   <% end %>
 
-<%= yield %>
+<img src="https://lh6.googleusercontent.com/-Yjr8_GXULjo/UmwmNCklCqI/AAAAAAAAAB8/HXtW0ceeWEY/w253-h253-p/2013-10-26" width=100 height=100 align="middle">
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="#">Home</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+
+      	<%= link_to "Groups", groups_path, "class" => "brand" %>
+      	<%= link_to "Patients", patients_path, "class" => "brand" %>
+      	<%= link_to "Meetings", meetings_path, "class" => "brand" %>
+      	<%= link_to "Account", edit_user_registration_path, "class" => "brand" %>
+        <%= link_to "Log out", destroy_user_session_path, :method => :delete, "class" => "brand" %>
+
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+      </div>
+ 
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+	<%= yield %>
+</div>
+
+
+
+
+
+
 
 </body>
 </html>
