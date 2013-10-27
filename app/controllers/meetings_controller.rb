@@ -18,12 +18,14 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.new(meeting_params)
+
     if @meeting.save
       flash[:success] = "Meeting was successfully created"
       redirect_to @meeting
     else
       flash[:error] = @meeting.errors.full_messages[0]
       redirect_to new_meeting_url
+
     end
   end
 
@@ -49,6 +51,6 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:date)
+      params.require(:meeting).permit(:date, :group_id)
     end
 end
