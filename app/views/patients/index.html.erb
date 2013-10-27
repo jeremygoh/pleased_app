@@ -1,11 +1,12 @@
 <h1>Patient Records</h1>
-<table>
-  <thead>
+<table style="width: 960px; height: 81px;" border="1">
+  <thead align="left">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
       <th>Phone Number</th>
+      <th colspan="3">Actions</th>
     </tr>
   </thead>
 
@@ -18,7 +19,7 @@
       <td><%= patient.phone %></td>
       <td><%= link_to 'Show', patient %></td>
       <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-      <td><%= link_to 'Destrory', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
   </tbody>

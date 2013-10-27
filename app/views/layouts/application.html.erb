@@ -32,11 +32,11 @@
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse collapse">
 
-      	<a class="brand" href="#">Groups</a>
-      	<a class="brand" href="#">Patients</a>
-      	<a class="brand" href="#">Meetings</a>
-      	<a class="brand" href="#">Account Settings</a>
-      	<a class="brand" href="#">Sign Out</a>
+      	<%= link_to "Groups", groups_path, "class" => "brand" %>
+      	<%= link_to "Patients", patients_path, "class" => "brand" %>
+      	<%= link_to "Meetings", meetings_path, "class" => "brand" %>
+      	<%= link_to "Account", edit_user_registration_path, "class" => "brand" %>
+        <%= link_to "Log out", destroy_user_session_path, :method => :delete, "class" => "brand" %>
 
         <!-- .nav, .navbar-search, .navbar-form, etc -->
       </div>
