@@ -15,14 +15,15 @@ p {text-indent:10px;}
 <h3>Comments</h3>
 
 <%= form_for(@comment) do |f| %>
-  <%#= f.label :comment %>
-  <%= f.text_field :comment %>
+  <%= f.label :comment %>
+  <%= f.text_area :comment, :rows => "2", :class => "span6" %>
 
-  <% if @patient.meetings.count > 0 %>
-    <%= f.label :meeting_id %>
-    <%= select(:comment, :meeting_id, @patient.meetings.map{ |m| [m.date, m.id] },
+
+  <%# if @patient.meetings.count > 0 %>
+    <%#= f.label :meeting_id %>
+    <%#= select(:comment, :meeting_id, @patient.meetings.map{ |m| [m.date, m.id] },
           { :include_blank => true }) %>
-  <% end %>
+  <%# end %>
 
   <%= f.hidden_field :patient_id, :value => @patient.id %>
   <%= f.submit "Add comment" %>
@@ -33,8 +34,11 @@ p {text-indent:10px;}
   <th>Author</th>
   <th>Comment</th>
   <th>Date</th>
+<<<<<<< HEAD
   <th>Meeting</th>
   <th colspan="2">Actions</th>
+=======
+>>>>>>> 7458a0a613e70d5ffdffc5b71165ca84147635da
 </tr>
 
 <% @patient.comments.order("created_at DESC").each do |comment| %>

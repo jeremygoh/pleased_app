@@ -3,4 +3,7 @@ class Meeting < ActiveRecord::Base
   has_many :patients, through: :attends
   belongs_to :group
 
+  validates :group, presence: true
+
+
 end
