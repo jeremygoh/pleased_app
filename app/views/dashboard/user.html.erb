@@ -104,10 +104,7 @@
                           </td>
                         <% end %>
                         <!-- for the followed up boxes -->
-                        </tr>
-                      </table>
-
-                        <% @all_notifications.each do |notification| %>
+                        <td>         <% @all_notifications.each do |notification| %>
                             <div class="attend-checked-form">
                               <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
                                 <%= hidden_field_tag "attend[checked]", nil %>
@@ -118,6 +115,10 @@
                               </form>
                             </div>
                           <% end %>
+</td>
+                        </tr>
+                      </table>
+
 
                   </div>
               <% end %>
@@ -196,11 +197,7 @@
                       <td><%= Patient.find(notification[0]).first_name %></td>
                       <td><%= Meeting.find(notification[1]).date %></td>
                       <td><%= ((Time.now - Meeting.find(notification[1]).date)/86400).floor.to_s + " days" %></td>
-                    </tr>
-                  <% end %>
-                  </table>
-
-                        <% @notifications.each do |notification| %>
+                      <td>    <% @notifications.each do |notification| %>
                             <div class="attend-checked-form">
                               <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
                                 <%= hidden_field_tag "attend[checked]", nil %>
@@ -211,7 +208,12 @@
                                 </form>
                             </div>
                           <% end %>
-            </div>
+            </div></td>
+                    </tr>
+                  <% end %>
+                  </table>
+
+
           <% end %>
         </div>
     </div>
