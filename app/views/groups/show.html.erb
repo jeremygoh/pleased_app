@@ -1,7 +1,17 @@
-<h1>Show Group</h1>
+<h1><%= @group.name %></h1>
 
-<p>Group Name: <%= @group.name %></p>
+<p>
+  <% if @group.patients.count > 0 %>
+    <strong>Members:</strong>
+    <ul>
+    <% @group.patients.each do |member| %>
+      <li><%= link_to member.first_name+' '+member.last_name, member %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <strong>This group has no patients assigned to it yet.</strong>
+  <% end %>
+</p>
 
 
-<%= link_to "delete", @group, method: :delete,
-                                  data: { confirm: "Are you sure?" } %>
+<%= link_to "delete", @group, method: :delete, data: { confirm: "Are you sure?" } %>

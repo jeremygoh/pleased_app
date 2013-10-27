@@ -1,5 +1,14 @@
 <h1>Patient Record</h1>
 
+<p>
+  <% if @patient.group %>
+    <strong>Group:</strong>
+    <%= link_to @patient.group.name, @patient.group %>
+  <% else %>
+    <strong>This patient was not added to any group yet.</strong>
+  <% end %>
+</p>
+
 <p>First Name: <%= @patient.first_name %></p>
 <p>Last Name: <%= @patient.last_name %></p>
 <p>Email: <%= @patient.email %></p>
