@@ -21,7 +21,7 @@
                       <th>Followed Up?</th>
                     </thead>
                       <% @all_notifications.each do |notification| %>
-                        <tr>
+                        <tr id="patient-<%=notification[0]%>-meeting-<%=notification[1]%>">
                           <td><%= Patient.find(notification[0]).last_name %></td>
                           <td><%= Patient.find(notification[0]).first_name %></td>
                           <td><%= Meeting.find(notification[1]).date %></td>
@@ -38,22 +38,23 @@
                           </td>
                         <% end %>
                         <!-- for the followed up boxes -->
-                        <td><% @all_notifications.each do |notification| %>
                         </tr>
                       </table>
 
-                       <p>
-                          <form action="/meetings/<%= notification[1] %>/attends" method="post" class="attend_form form-inline" role="form">
-                            <%= hidden_field_tag "attend[checked]", nil %>
-                            <input class="attend_checked" name="attend[checked]" type="checkbox" />
-                            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-                            <input class="patient" name="attend[patient_id]" type="hidden" value="<%= notification[0] %>" />
-                            <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= notification[1] %>" />
-                          </form>
-                        </p>
+                        <% @all_notifications.each do |notification| %>
+                            <div class="attend-checked-form">
+                              <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
+                                <%= hidden_field_tag "attend[checked]", nil %>
+                                <input class="attend_checked" name="attend[checked]" type="checkbox" />
+                                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+                                <input class="patient" name="attend[patient_id]" type="hidden" value="<%= notification[0] %>" />
+                                <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= notification[1] %>" />
+                                <input type="submit" value="submit" />
+                                </form>
+                            </div>
+                          <% end %>
 
 
-                        <% end %>
 
 
 
@@ -186,7 +187,6 @@
                                 </form>
                             </div>
                           <% end %>
-
             </div>
           <% end %>
         </div>
@@ -243,7 +243,7 @@
         </div>
     </div>
 <% end %>
-patient-<%=@notifications[0]%>-meeting-<%=@notifications[1]%>
+
 
 
 <script type="text/javascript">
