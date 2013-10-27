@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :role, presence: true
 
   has_and_belongs_to_many :groups
+  has_many :meetings, :through => :groups
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
