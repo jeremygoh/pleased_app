@@ -19,7 +19,7 @@
       <td><%= patient.first_name %></td>
       <td><%= patient.email %></td>
       <td><%= patient.phone %></td>
-      <td><%= patient.group.name unless patient.group.nil? %></td>
+      <td><%= link_to patient.group.name, patient.group if patient.group %></td>
       <td><%= link_to 'View', patient %></td>
       <td><%= link_to 'Add Comment', patient %></td>
       <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
