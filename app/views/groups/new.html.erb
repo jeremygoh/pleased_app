@@ -4,6 +4,36 @@
   <%= f.label :name , "Name*:" %>
   <%= f.text_field :name %>
 
+
+  <label for="group_user">Healthcare Professional:</label>
+  <select id="group_users" name="group[health]">
+     <option value =""></option>
+    <% unless @healths.nil? %>
+      <% @healths.each do |health| %>
+        <option value="<%= health.id %>"><%= health.full_name %></option>
+        <% end %>
+    <% end %>
+  </select>
+
+    <label for="group_user">Peer Support Leader:</label>
+  <select id="group_users" name="group">
+     <option value =""></option>
+     <% unless @peers.nil? %>
+        <% @peers.each do |peer| %>
+          <option value="<%= peer.id %>"><%= peer.full_name %></option>
+          <% end %>
+      <% end %>
+  </select>
+
+<!--   <label for="group_user">Peer Support Leader:</label>
+  <select id="group_users" name="group[users][3]">
+    <option value =""></option>
+    <%# @peers.each do |peer| %>
+
+      <option value="<%#= peer.id %>"><%#= peer.full_name %></option>
+      <%# end %>
+  </select> -->
+
   <%= f.submit "Create Group" %>
 
 <% end %>

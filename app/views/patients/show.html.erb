@@ -4,6 +4,9 @@
 <p>Last Name: <%= @patient.last_name %></p>
 <p>Email: <%= @patient.email %></p>
 <p>Phone: <%= @patient.phone %></p>
+<p>Group:  <%= @patient.group.name unless @patient.group.nil? %></p>
+
+
 
 <h2>Comments</h2>
 
@@ -14,7 +17,7 @@
   <% if @patient.meetings.count > 0 %>
     <%= f.label :meeting_id %>
     <%= select(:comment, :meeting_id, @patient.meetings.map{ |m| [m.date, m.id] },
-	      { :include_blank => true }) %>
+          { :include_blank => true }) %>
   <% end %>
 
   <%= f.hidden_field :patient_id, :value => @patient.id %>
@@ -23,18 +26,18 @@
 
 <table>
 <tr>
-	<th>Author</th>
-	<th>Comment</th>
-	<th>Date</th>
-	<th>Meeting</th>
+  <th>Author</th>
+  <th>Comment</th>
+  <th>Date</th>
+  <th>Meeting</th>
 </tr>
 
 <% @patient.comments.order("created_at DESC").each do |comment| %>
 <tr>
-	<td><%= comment.user.first_name %> <%= comment.user.last_name %></td>
-	<td><%= comment.comment %></td>
-	<td><%= comment.created_at %></td>
-	<td><%= link_to comment.meeting.date, meeting_path(comment.meeting.id) if comment.meeting %></td>
+  <td><%= comment.user.first_name %> <%= comment.user.last_name %></td>
+  <td><%= comment.comment %></td>
+  <td><%= comment.created_at %></td>
+  <td><%= link_to comment.meeting.date, meeting_path(comment.meeting.id) if comment.meeting %></td>
   <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
   <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

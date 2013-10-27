@@ -13,16 +13,15 @@
 <body>
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
-      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <div class="alert alert-<%= name %>">
         <a class="close" data-dismiss="alert">&#215;</a>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        <h4><%= msg %></h4>
       </div>
-    <% else %>
-      <b>Invalid flash message:</b>
-      <%= msg %>
     <% end %>
   <% end %>
 
+
+<%= image_tag "logo.jpg", "width" => 100, "height" => 100, "align" => "middle" %>
 
 
 
