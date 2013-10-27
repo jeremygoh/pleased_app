@@ -62,5 +62,5 @@ function updateTime()
   var str = day+'/'+month+'/'+year;//+', '+hour+':'+minute+':'+second;
 
   $('span.current_time').html(str);
-  window.setTimeout(updateTime, 1000);
+  window.setTimeout(updateTime, 60000);
 }
