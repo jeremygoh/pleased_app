@@ -10,7 +10,15 @@ class AttendsController < ApplicationController
     end
   end
 
-
+  def update
+    patient_id = params[:attend][:patient_id]
+    patient = Patient.find(patient_id)
+    meeting_id = params[:attend][:meeting_id]
+    attend_record = Attend.where(:patient_id => patient.id, :meeting_id => meeting_id).first
+    if attend_record.update_attributes(attend_params)
+      redirect_to '/dashboard'
+    end
+  end
 
   private
 

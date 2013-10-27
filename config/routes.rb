@@ -15,6 +15,7 @@ PleasedApp::Application.routes.draw do
   resources :meetings do
     member do
       post 'attends' => 'attends#create'
+      patch 'attends' => 'attends#update'
     end
   end
 
