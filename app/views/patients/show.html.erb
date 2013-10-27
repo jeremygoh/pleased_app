@@ -1,18 +1,23 @@
 <h1>Patient Record</h1>
+<br/>
+<style>
+p {text-indent:10px;}
+</style>
+<div>
+<p>    First Name: <%= @patient.first_name %></p>
+<p>    Last Name: <%= @patient.last_name %></p>
+<p>    Email: <%= @patient.email %></p>
+<p>    Phone: <%= @patient.phone %></p>
+<p>    Group:  <%= @patient.group.name unless @patient.group.nil? %></p>
+</div>
 
-<p>First Name: <%= @patient.first_name %></p>
-<p>Last Name: <%= @patient.last_name %></p>
-<p>Email: <%= @patient.email %></p>
-<p>Phone: <%= @patient.phone %></p>
-<p>Group:  <%= @patient.group.name unless @patient.group.nil? %></p>
-
-
-
-<h2>Comments</h2>
+<br/>
+<h3>Comments</h3>
 
 <%= form_for(@comment) do |f| %>
   <%= f.label :comment %>
   <%= f.text_area :comment, :rows => "2", :class => "span6" %>
+
 
   <%# if @patient.meetings.count > 0 %>
     <%#= f.label :meeting_id %>
@@ -29,6 +34,8 @@
   <th>Author</th>
   <th>Comment</th>
   <th>Date</th>
+  <th colspan="2">Actions</th>
+
 </tr>
 
 <% @patient.comments.order("created_at DESC").each do |comment| %>
