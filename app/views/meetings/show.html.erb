@@ -42,8 +42,10 @@
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+<% if current_user.is_admin? %>
+  <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+  <%= link_to 'Back', meetings_path %>
+<% end %>
 
 <script type="text/javascript">
   $(".attend_checkbox").on('click', function(event){

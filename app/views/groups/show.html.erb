@@ -48,5 +48,7 @@
 </p>
 
 
-<%= link_to "edit", edit_group_path(@group) %> |
-<%= link_to "delete", @group, method: :delete, data: { confirm: "This will also delete meetings for this group. Are you sure you wish to delete?" } %>
+<% if current_user.is_admin? %>
+  <%= link_to "edit", edit_group_path(@group) %> |
+  <%= link_to "delete", @group, method: :delete, data: { confirm: "This will also delete meetings for this group. Are you sure you wish to delete?" } %>
+<% end %>

@@ -22,8 +22,10 @@
       <td><%= link_to patient.group.name, patient.group if patient.group %></td>
       <td><%= link_to 'View', patient %></td>
       <td><%= link_to 'Add Comment', patient %></td>
-      <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-      <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% if current_user.is_admin? %>
+        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
+        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
     </tr>
   <% end %>
 </tbody>
