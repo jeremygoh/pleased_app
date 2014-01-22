@@ -3,12 +3,12 @@
       <h4>Administrator DashBoard</h4>
 
 
-        <div>
+        <div style="float:left;">
             <div class="panel-heading">
               <h4 class="panel-title" style="color: black">Follow-Ups</h4>
             </div>
 
-            <div class="panel-body">
+            <div class="panel-body" >
                 <div class="alert alert-safety">
               <%if !@all_notifications.nil? && !@all_notifications.empty? %>
                 <div class="alert alert-danger">
@@ -62,7 +62,7 @@
 
     <h4>Healthcare Professional Dashboard</h4>
 
-      <div>
+      <div style="float:left;">
             <div class="panel-heading" style="border: solid; size: 1px;">
               <h2 class="panel-title" style="color: black">Follow-Ups</h2>
             </div>
@@ -107,20 +107,20 @@
                           </td>
                         </tr>
                         <% end %>
-                        <!-- for the followed up boxes -->
+                        <%#duplication here... %>
 
-                        <td>         <% @all_notifications.each do |notification| %>
+<!--                         <td>         <%# @all_notifications.each do |notification| %>
                             <div class="attend-checked-form">
-                              <form action="/meetings/<%= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
-                                <%= hidden_field_tag "attend[checked]", nil %>
+                              <form action="/meetings/<%#= notification[1] %>/attends" method="post" class="checked_form form-inline" role="form">
+                                <%#= hidden_field_tag "attend[checked]", nil %>
                                 <input class="attend_checked" name="attend[checked]" type="checkbox" />
-                                <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-                                <input class="patient" name="attend[patient_id]" type="hidden" value="<%= notification[0] %>" />
-                                <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%= notification[1] %>" />
+                                <input name="authenticity_token" value="<%#= form_authenticity_token %>" type="hidden">
+                                <input class="patient" name="attend[patient_id]" type="hidden" value="<%#= notification[0] %>" />
+                                <input class="meeting" name="attend[meeting_id]" type="hidden" value="<%#= notification[1] %>" />
                               </form>
                             </div>
-                          <% end %>
-</td>
+                          <%# end %>
+</td> -->
                         </tr>
                       </table>
 
@@ -132,7 +132,7 @@
 
         </div>
 
-      <div class="panel-heading">
+      <div class="panel-heading" style="clear:both;">
           <h4 class="panel-title" style="color: black">Meetings</h4>
       </div>
 
@@ -175,7 +175,7 @@
 <% else current_user %>
     <h4>Dashboard for Peer Leaders</h4>
 
-    <div>
+    <div style="float:left;">
         <div class="panel-heading">
           <h4 class="panel-title" style="color: black">Follow-Ups</h4>
         </div>
@@ -223,7 +223,7 @@
 
 
 
-      <div class="panel-heading">
+      <div class="panel-heading" style="clear:both;">
           <h4 class="panel-title" style="color: black">Meetings</h4>
       </div>
 
