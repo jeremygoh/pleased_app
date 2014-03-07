@@ -8,7 +8,11 @@ PleasedApp::Application.routes.draw do
 
   resources :meetings
 
-  devise_for :users, :path_prefix => 'my'
+  devise_for :users, :path_prefix => 'my', :skip => [:registrations]
+    as :user do
+    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+    put 'users' => 'devise/registrations#update', :as => 'user_registration'
+  end
   resources :users
   resources :patients
   resources :groups
